@@ -18,6 +18,7 @@ import org.apache.logging.log4j.Logger;
  * This API allows the customer to get one of their saved playlists.
  */
 public class GetPlaylistActivity implements RequestHandler<GetPlaylistRequest, GetPlaylistResult> {
+
     private final Logger log = LogManager.getLogger();
     private final PlaylistDao playlistDao;
 
@@ -42,6 +43,7 @@ public class GetPlaylistActivity implements RequestHandler<GetPlaylistRequest, G
      */
     @Override
     public GetPlaylistResult handleRequest(final GetPlaylistRequest getPlaylistRequest, Context context) {
+
         log.info("Received GetPlaylistRequest {}", getPlaylistRequest);
         String requestedId = getPlaylistRequest.getId();
         Playlist playlist = playlistDao.getPlaylist(requestedId);
@@ -50,5 +52,7 @@ public class GetPlaylistActivity implements RequestHandler<GetPlaylistRequest, G
         return GetPlaylistResult.builder()
                 .withPlaylist(playlistModel)
                 .build();
+
     }
+
 }

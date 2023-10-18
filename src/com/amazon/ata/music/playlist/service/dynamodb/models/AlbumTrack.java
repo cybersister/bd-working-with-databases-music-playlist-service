@@ -7,4 +7,5 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
  */
 @DynamoDBTable(tableName = "album_tracks")
 public class AlbumTrack {
+
 }

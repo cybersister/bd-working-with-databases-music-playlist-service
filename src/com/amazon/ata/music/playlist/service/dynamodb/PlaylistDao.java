@@ -9,6 +9,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
  * Accesses data for a playlist using {@link Playlist} to represent the model in DynamoDB.
  */
 public class PlaylistDao {
+
     private final DynamoDBMapper dynamoDbMapper;
 
     /**
@@ -35,4 +36,5 @@ public class PlaylistDao {
 
         return playlist;
     }
+
 }

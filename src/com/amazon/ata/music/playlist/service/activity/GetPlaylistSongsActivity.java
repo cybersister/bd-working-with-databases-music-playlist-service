@@ -17,7 +17,9 @@ import java.util.Collections;
  *
  * This API allows the customer to get the list of songs of a saved playlist.
  */
-public class GetPlaylistSongsActivity implements RequestHandler<GetPlaylistSongsRequest, GetPlaylistSongsResult> {
+public class GetPlaylistSongsActivity implements RequestHandler<GetPlaylistSongsRequest,
+        GetPlaylistSongsResult> {
+
     private final Logger log = LogManager.getLogger();
     private final PlaylistDao playlistDao;
 
@@ -38,14 +40,18 @@ public class GetPlaylistSongsActivity implements RequestHandler<GetPlaylistSongs
      * If the playlist does not exist, this should throw a PlaylistNotFoundException.
      *
      * @param getPlaylistSongsRequest request object containing the playlist ID
-     * @return getPlaylistSongsResult result object containing the playlist's list of API defined {@link SongModel}s
+     * @return getPlaylistSongsResult result object containing the playlist's list of API defined
+     *                                {@link SongModel}s
      */
     @Override
-    public GetPlaylistSongsResult handleRequest(final GetPlaylistSongsRequest getPlaylistSongsRequest, Context context) {
+    public GetPlaylistSongsResult handleRequest(final GetPlaylistSongsRequest getPlaylistSongsRequest,
+                                                Context context) {
+
         log.info("Received GetPlaylistSongsRequest {}", getPlaylistSongsRequest);
 
         return GetPlaylistSongsResult.builder()
                 .withSongList(Collections.singletonList(new SongModel()))
                 .build();
     }
+
 }

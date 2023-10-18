@@ -15,7 +15,9 @@ import org.apache.logging.log4j.Logger;
  *
  * This API allows the customer to create a new playlist with no songs.
  */
-public class CreatePlaylistActivity implements RequestHandler<CreatePlaylistRequest, CreatePlaylistResult> {
+public class CreatePlaylistActivity implements
+        RequestHandler<CreatePlaylistRequest, CreatePlaylistResult> {
+
     private final Logger log = LogManager.getLogger();
     private final PlaylistDao playlistDao;
 
@@ -29,24 +31,28 @@ public class CreatePlaylistActivity implements RequestHandler<CreatePlaylistRequ
     }
 
     /**
-     * This method handles the incoming request by persisting a new playlist
-     * with the provided playlist name and customer ID from the request.
+     * This method handles the incoming request by persisting a new playlist with the provided playlist
+     * name and customer ID from the request.
      * <p>
      * It then returns the newly created playlist.
      * <p>
      * If the provided playlist name or customer ID has invalid characters, throws an
-     * InvalidAttributeValueException
+     * InvalidAttributeValueException.
      *
-     * @param createPlaylistRequest request object containing the playlist name and customer ID
-     *                              associated with it
-     * @return createPlaylistResult result object containing the API defined {@link PlaylistModel}
+     * @param createPlaylistRequest request object containing the playlist name and customer ID associated
+     *                              with it
+     * @return createPlaylistResult result object containing the API defined {@link PlaylistModel}s
      */
     @Override
-    public CreatePlaylistResult handleRequest(final CreatePlaylistRequest createPlaylistRequest, Context context) {
+    public CreatePlaylistResult handleRequest(final CreatePlaylistRequest createPlaylistRequest,
+                                              Context context) {
+
         log.info("Received CreatePlaylistRequest {}", createPlaylistRequest);
 
         return CreatePlaylistResult.builder()
                 .withPlaylist(new PlaylistModel())
                 .build();
+
     }
+
 }

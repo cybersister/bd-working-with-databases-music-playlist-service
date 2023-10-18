@@ -14,6 +14,7 @@ import java.util.List;
  */
 @DynamoDBTable(tableName = "playlists")
 public class Playlist {
+
     private String id;
     private List<AlbumTrack> songList;
 
@@ -36,4 +37,5 @@ public class Playlist {
     public void setSongList(List<AlbumTrack> songList) {
         this.songList = songList;
     }
+
 }

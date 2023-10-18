@@ -18,7 +18,9 @@ import java.util.Collections;
  *
  * This API allows the customer to add a song to their existing playlist.
  */
-public class AddSongToPlaylistActivity implements RequestHandler<AddSongToPlaylistRequest, AddSongToPlaylistResult> {
+public class AddSongToPlaylistActivity implements
+        RequestHandler<AddSongToPlaylistRequest, AddSongToPlaylistResult> {
+
     private final Logger log = LogManager.getLogger();
     private final PlaylistDao playlistDao;
     private final AlbumTrackDao albumTrackDao;
@@ -33,10 +35,11 @@ public class AddSongToPlaylistActivity implements RequestHandler<AddSongToPlayli
         this.playlistDao = playlistDao;
         this.albumTrackDao = albumTrackDao;
     }
+    // constructor
 
     /**
-     * This method handles the incoming request by adding an additional song
-     * to a playlist and persisting the updated playlist.
+     * This method handles the incoming request by adding another song to a playlist and persisting the
+     * updated playlist.
      * <p>
      * It then returns the updated song list of the playlist.
      * <p>
@@ -44,17 +47,21 @@ public class AddSongToPlaylistActivity implements RequestHandler<AddSongToPlayli
      * <p>
      * If the album track does not exist, this should throw an AlbumTrackNotFoundException.
      *
-     * @param addSongToPlaylistRequest request object containing the playlist ID and an asin and track number
-     *                                 to retrieve the song data
-     * @return addSongToPlaylistResult result object containing the playlist's updated list of
-     *                                 API defined {@link SongModel}s
+     * @param addSongToPlaylistRequest request object containing the playlist ID and an asin and track
+     *                                 number to retrieve the song data
+     * @return addSongToPlaylistResult result object containing the playlist's updated list of API
+     *                                 defined {@link SongModel}s
      */
     @Override
-    public AddSongToPlaylistResult handleRequest(final AddSongToPlaylistRequest addSongToPlaylistRequest, Context context) {
+    public AddSongToPlaylistResult handleRequest(final AddSongToPlaylistRequest addSongToPlaylistRequest,
+                                                 Context context) {
+
         log.info("Received AddSongToPlaylistRequest {} ", addSongToPlaylistRequest);
 
         return AddSongToPlaylistResult.builder()
                 .withSongList(Collections.singletonList(new SongModel()))
                 .build();
+
     }
+
 }

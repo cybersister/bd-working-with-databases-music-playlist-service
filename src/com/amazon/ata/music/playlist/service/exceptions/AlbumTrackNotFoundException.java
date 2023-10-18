@@ -5,6 +5,7 @@ package com.amazon.ata.music.playlist.service.exceptions;
  * in the database.
  */
 public class AlbumTrackNotFoundException extends RuntimeException {
+
     private static final long serialVersionUID = -1230785223023147290L;
 
     /**
@@ -38,4 +39,5 @@ public class AlbumTrackNotFoundException extends RuntimeException {
     public AlbumTrackNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
+
 }

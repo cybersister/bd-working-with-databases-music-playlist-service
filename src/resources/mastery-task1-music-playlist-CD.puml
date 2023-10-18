@@ -1,1 +1,206 @@
-PARTICIPANTS: use this file for creating the class diagram in mastery task 01
+@startuml
+!pragma layout smetana
+
+AddSongToPlaylistActivity ..o PlaylistDao
+
+class AddSongToPlaylistActivity implements RequestHandler {
+    - log: Logger
+    - playlistDao: PlaylistDao
+    - albumTrackDao: AlbumTrackDao
+
+    + handleRequest(addSongToPlaylistRequest: AddSongToPlaylistRequest, context: Context): AddSongToPlaylistResult
+}
+
+AddSongToPlaylistActivity ..o AlbumTrackDao
+AddSongToPlaylistActivity .o Logger
+AddSongToPlaylistActivity ..|> RequestHandler
+
+class AlbumTrackNotFoundException extends RuntimeException {
+}
+class PlaylistNotFoundException extends RuntimeException {
+}
+
+PlaylistNotFoundException <|-- AddSongToPlaylistActivity
+AlbumTrackNotFoundException <|-- AddSongToPlaylistActivity
+
+class PlaylistDao {
+    - dynamoDbMapper: DynamoDBMapper
+
+    + getPlaylist(id: String): Playlist
+}
+
+class AlbumTrackDao {
+    - dynamoDbMapper: DynamoDBMapper
+}
+
+PlaylistDao ..o DynamoDBMapper
+AlbumTrackDao ..o DynamoDBMapper
+
+@enduml
+
+
+                        newpage
+
+
+
+@startuml
+!pragma layout smetana
+
+CreatePlaylistActivity ..o Logger
+
+class CreatePlaylistActivity implements RequestHandler {
+    - log: Logger
+    - playlistDao: PlaylistDao
+
+    + handleRequest(createPlaylistRequest: CreatePlaylistRequest, context: Context): CreatePlaylistResult
+}
+
+CreatePlaylistActivity ..o PlaylistDao
+CreatePlaylistActivity ..|> RequestHandler
+
+class InvalidAttributeValueException extends RuntimeException {
+}
+
+InvalidAttributeValueException <|-- CreatePlaylistActivity
+
+class PlaylistDao {
+    - dynamoDbMapper: DynamoDBMapper
+
+    + getPlaylist(id: String): Playlist
+}
+
+PlaylistDao ..o DynamoDBMapper
+
+@enduml
+
+
+
+                        newpage
+
+
+
+@startuml
+!pragma layout smetana
+
+GetPlaylistActivity ..o Logger
+
+class GetPlaylistActivity implements RequestHandler {
+    - log: Logger
+    - playlistDao: PlaylistDao
+
+    + handleRequest(getPlaylistRequest: GetPlaylistRequest, context: Context): GetPlaylistResult
+}
+
+GetPlaylistActivity ..o PlaylistDao
+GetPlaylistActivity ..|> RequestHandler
+
+class PlaylistNotFoundException extends RuntimeException {
+}
+
+PlaylistNotFoundException <|-- GetPlaylistActivity
+
+class PlaylistDao {
+    - dynamoDbMapper: DynamoDBMapper
+
+    + getPlaylist(id: String): Playlist
+}
+
+PlaylistDao ..o DynamoDBMapper
+
+@enduml
+
+
+
+                        newpage
+
+
+
+@startuml
+!pragma layout smetana
+
+GetPlaylistSongsActivity ..o Logger
+
+class GetPlaylistSongsActivity implements RequestHandler {
+    - log: Logger
+    - playlistDao: PlaylistDao
+
+    + handleRequest(getPlaylistSongsRequest: GetPlaylistSongsRequest, context: Context): GetPlaylistSongsResult
+}
+
+GetPlaylistSongsActivity ..o PlaylistDao
+GetPlaylistSongsActivity ..|> RequestHandler
+
+class PlaylistNotFoundException extends RuntimeException {
+}
+
+PlaylistNotFoundException <|-- GetPlaylistSongsActivity
+
+class PlaylistDao {
+    - dynamoDbMapper: DynamoDBMapper
+
+    + getPlaylist(id: String): Playlist
+}
+
+PlaylistDao ..o DynamoDBMapper
+
+@enduml
+
+
+
+                        newpage
+
+
+
+@startuml
+!pragma layout smetana
+
+UpdatePlaylistActivity ..o Logger
+
+class UpdatePlaylistActivity implements RequestHandler {
+    - log: Logger
+    - playlistDao: PlaylistDao
+
+    + handleRequest(updatePlaylistRequest: UpdatePlaylistRequest, context: Context): UpdatePlaylistResult
+}
+
+UpdatePlaylistActivity ..o PlaylistDao
+UpdatePlaylistActivity ..|> RequestHandler
+
+class PlaylistNotFoundException extends RuntimeException {
+}
+class InvalidAttributeValueException extends RuntimeException {
+}
+class InvalidAttributeChangeException extends RuntimeException {
+}
+
+PlaylistNotFoundException <|-- UpdatePlaylistActivity
+InvalidAttributeValueException <|-- UpdatePlaylistActivity
+InvalidAttributeChangeException <|-- UpdatePlaylistActivity
+
+class PlaylistDao {
+    - dynamoDbMapper: DynamoDBMapper
+
+    + getPlaylist(id: String): Playlist
+}
+
+PlaylistDao ..o DynamoDBMapper
+
+@enduml
+
+
+
+                        newpage
+
+
+
+@startuml
+!pragma layout smetana
+
+
+
+
+
+class AlbumTrack
+class Playlist
+
+@enduml
