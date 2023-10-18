@@ -1,6 +1,8 @@
 @startuml
 !pragma layout smetana
 
+title <AddSongToPlaylistActivity> Class Diagram
+
 AddSongToPlaylistActivity ..o PlaylistDao
 
 class AddSongToPlaylistActivity implements RequestHandler {
@@ -46,6 +48,8 @@ AlbumTrackDao ..o DynamoDBMapper
 @startuml
 !pragma layout smetana
 
+title <CreatePlaylistActivity> Class Diagram
+
 CreatePlaylistActivity ..o Logger
 
 class CreatePlaylistActivity implements RequestHandler {
@@ -81,6 +85,8 @@ PlaylistDao ..o DynamoDBMapper
 
 @startuml
 !pragma layout smetana
+
+title <GetPlaylistActivity> Class Diagram
 
 GetPlaylistActivity ..o Logger
 
@@ -118,6 +124,8 @@ PlaylistDao ..o DynamoDBMapper
 @startuml
 !pragma layout smetana
 
+title <GetPlaylistSongsActivity> Class Diagram
+
 GetPlaylistSongsActivity ..o Logger
 
 class GetPlaylistSongsActivity implements RequestHandler {
@@ -153,6 +161,8 @@ PlaylistDao ..o DynamoDBMapper
 
 @startuml
 !pragma layout smetana
+
+title <UpdatePlaylistActivity> Class Diagram
 
 UpdatePlaylistActivity ..o Logger
 
@@ -196,11 +206,38 @@ PlaylistDao ..o DynamoDBMapper
 @startuml
 !pragma layout smetana
 
+title <AlbumTrack> Class Diagram
+
+class AlbumTrack {
+    - asin: String
+    - trackNumber: Integer
+    - albumName: String
+    - songTitle: String
+
+    + <<DynamoDBHashKey>> getAsin(): String
+    + <<DynamoDBRangeKey>> getTrackNumber(): Integer
+    + <<DynamoDBAttribute>> getAlbumName(): String
+    + <<DynamoDBAttribute>> getSongTitle(): String
+}
+
+@enduml
 
 
 
+                        newpage
 
-class AlbumTrack
+
+
+@startuml
+!pragma layout smetana
+
+title <Playlist> Class Diagram
+
 class Playlist
+
+
+
+
+
 
 @enduml

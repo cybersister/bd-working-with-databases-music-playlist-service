@@ -53,6 +53,20 @@ public class CreatePlaylistActivity implements
                 .withPlaylist(new PlaylistModel())
                 .build();
 
+        // todo: this doesn't seem like it's doing anything ...
+        //  it's creating a new playlist from scratch without referencing the 'createPlaylistRequest'
+        //  argument ... it's logging it
+
+        // todo: where is the utility class validation method being used?
+        //  the method to generate a new, unique playlist id?
+
+        // todo: validate that the provided customer id and playlist name do not contain any invalid
+        //  characters -> (") (') (\) ...
+        //  throw an InvalidAttributeValueException if any of those characters show up
+
+        // todo: do not want to store duplicate tags, choose a data structure that can provide this
+        //  behavior
+
     }
 
 }

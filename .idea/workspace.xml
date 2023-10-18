@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="" />
+    <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DESIGN_DOCUMENT.md" beforeDir="false" afterPath="$PROJECT_DIR$/DESIGN_DOCUMENT.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/models/requests/UpdatePlaylistRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/models/requests/UpdatePlaylistRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/mastery-task1-music-playlist-CD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/mastery-task1-music-playlist-CD.puml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -197,6 +197,7 @@ This section maps the attributes of our tables, with the corresponding DDB type.
 
 ```markdown
     album_tracks
+
     asin // partition key, string
     track_number // sort key, number
     album_name // string
