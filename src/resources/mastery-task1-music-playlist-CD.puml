@@ -3,7 +3,7 @@
 
 title <AddSongToPlaylistActivity> Class Diagram
 
-AddSongToPlaylistActivity ..o PlaylistDao
+AddSongToPlaylistActivity o-- PlaylistDao
 
 class AddSongToPlaylistActivity implements RequestHandler {
     - log: Logger
@@ -13,7 +13,7 @@ class AddSongToPlaylistActivity implements RequestHandler {
     + handleRequest(addSongToPlaylistRequest: AddSongToPlaylistRequest, context: Context): AddSongToPlaylistResult
 }
 
-AddSongToPlaylistActivity ..o AlbumTrackDao
+AddSongToPlaylistActivity o-- AlbumTrackDao
 AddSongToPlaylistActivity .o Logger
 AddSongToPlaylistActivity ..|> RequestHandler
 
@@ -59,7 +59,7 @@ class CreatePlaylistActivity implements RequestHandler {
     + handleRequest(createPlaylistRequest: CreatePlaylistRequest, context: Context): CreatePlaylistResult
 }
 
-CreatePlaylistActivity ..o PlaylistDao
+CreatePlaylistActivity o-- PlaylistDao
 CreatePlaylistActivity ..|> RequestHandler
 
 class InvalidAttributeValueException extends RuntimeException {
@@ -97,7 +97,7 @@ class GetPlaylistActivity implements RequestHandler {
     + handleRequest(getPlaylistRequest: GetPlaylistRequest, context: Context): GetPlaylistResult
 }
 
-GetPlaylistActivity ..o PlaylistDao
+GetPlaylistActivity o-- PlaylistDao
 GetPlaylistActivity ..|> RequestHandler
 
 class PlaylistNotFoundException extends RuntimeException {
@@ -135,7 +135,7 @@ class GetPlaylistSongsActivity implements RequestHandler {
     + handleRequest(getPlaylistSongsRequest: GetPlaylistSongsRequest, context: Context): GetPlaylistSongsResult
 }
 
-GetPlaylistSongsActivity ..o PlaylistDao
+GetPlaylistSongsActivity o-- PlaylistDao
 GetPlaylistSongsActivity ..|> RequestHandler
 
 class PlaylistNotFoundException extends RuntimeException {
@@ -173,7 +173,7 @@ class UpdatePlaylistActivity implements RequestHandler {
     + handleRequest(updatePlaylistRequest: UpdatePlaylistRequest, context: Context): UpdatePlaylistResult
 }
 
-UpdatePlaylistActivity ..o PlaylistDao
+UpdatePlaylistActivity o-- PlaylistDao
 UpdatePlaylistActivity ..|> RequestHandler
 
 class PlaylistNotFoundException extends RuntimeException {
@@ -206,38 +206,36 @@ PlaylistDao ..o DynamoDBMapper
 @startuml
 !pragma layout smetana
 
-title <AlbumTrack> Class Diagram
+title <AlbumTrack> & <Playlist> Class Diagram
 
 class AlbumTrack {
-    - asin: String
-    - trackNumber: Integer
+    - @DynamoDBHashKey asin: String
+    - @DynamoDBRangeKey trackNumber: Integer
     - albumName: String
     - songTitle: String
 
-    + <<DynamoDBHashKey>> getAsin(): String
-    + <<DynamoDBRangeKey>> getTrackNumber(): Integer
-    + <<DynamoDBAttribute>> getAlbumName(): String
-    + <<DynamoDBAttribute>> getSongTitle(): String
+    + getAsin(): String
+    + getTrackNumber(): Integer
+    + getAlbumName(): String
+    + getSongTitle(): String
 }
 
-@enduml
+class Playlist {
+    - @DynamoDBHashKey id: String
+    - name: String
+    - customerId: String
+    - songCount: Integer
+    - tags: Set<String>
+    - songList: List<AlbumTrack>
 
+    + getAsin(): String
+    + getName(): String
+    + getCustomerId(): String
+    + getSongCount(): Integer
+    + getTags(): Set<String>
+    + getSongList(): List<AlbumTrack>
+}
 
-
-                        newpage
-
-
-
-@startuml
-!pragma layout smetana
-
-title <Playlist> Class Diagram
-
-class Playlist
-
-
-
-
-
+Playlist *-- AlbumTrack
 
 @enduml
