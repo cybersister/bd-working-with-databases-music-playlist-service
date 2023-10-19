@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class PlaylistModel {
+
     private String id;
     private String name;
     private String customerId;
@@ -93,6 +94,7 @@ public class PlaylistModel {
     public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
+
         private String id;
         private String name;
         private String customerId;
@@ -124,6 +126,10 @@ public class PlaylistModel {
             return this;
         }
 
-        public PlaylistModel build() {return new PlaylistModel(this);}
+        public PlaylistModel build() {
+            return new PlaylistModel(this);
+        }
+
     }
+
 }

@@ -17,6 +17,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class GetPlaylistActivityTest {
+
     @Mock
     private PlaylistDao playlistDao;
 
@@ -37,17 +38,18 @@ public class GetPlaylistActivityTest {
         int expectedSongCount = 0;
         List<String> expectedTags = Lists.newArrayList("tag");
 
-        Playlist playlist = new Playlist(expectedId, expectedName, expectedCustomerId,
-                expectedSongCount, Sets.newHashSet(expectedTags));
+        Playlist playlist = new Playlist();
+        playlist.setId(expectedId);
+        playlist.setName(expectedName);
+        playlist.setCustomerId(expectedCustomerId);
+        playlist.setSongCount(expectedSongCount);
+        playlist.setTags(Sets.newHashSet(expectedTags));
 
         when(playlistDao.getPlaylist(expectedId)).thenReturn(playlist);
 
         GetPlaylistRequest request = GetPlaylistRequest.builder()
             .withId(expectedId)
             .build();
-        // fixme: needs to be 'with' more values from the <Playlist> object design
-        //  aka more instance field variables ...
-        //  have to directly edit the 'GetPlaylistRequest' builder?
 
         // WHEN
         GetPlaylistResult result = getPlaylistActivity.handleRequest(request, null);
@@ -59,4 +61,7 @@ public class GetPlaylistActivityTest {
         assertEquals(expectedSongCount, result.getPlaylist().getSongCount());
         assertEquals(expectedTags, result.getPlaylist().getTags());
     }
+    // fixme: apparently ... something should change because the other class was updated ...
+    //  i feel like that's not a thing though and that everything for the most part looks fine and dandy
+
 }

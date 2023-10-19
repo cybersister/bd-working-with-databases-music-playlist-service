@@ -24,13 +24,7 @@ public class Playlist {
     private Set<String> tags;
     private List<AlbumTrack> songList;
 
-    public Playlist(String id, String name, String customerId, Integer songCount, Set<String> tags) {
-        this.id = id;
-        this.name = name;
-        this.customerId = customerId;
-        this.songCount = songCount;
-        this.tags = tags;
-
+    public Playlist() {
         songList = new ArrayList<>();
         // fixme: idk if i did this 'songList' shit right ...
     }
