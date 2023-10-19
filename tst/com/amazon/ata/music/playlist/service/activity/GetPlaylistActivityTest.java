@@ -61,7 +61,5 @@ public class GetPlaylistActivityTest {
         assertEquals(expectedSongCount, result.getPlaylist().getSongCount());
         assertEquals(expectedTags, result.getPlaylist().getTags());
     }
-    // fixme: apparently ... something should change because the other class was updated ...
-    //  i feel like that's not a thing though and that everything for the most part looks fine and dandy
 
 }

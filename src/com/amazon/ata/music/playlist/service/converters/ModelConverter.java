@@ -20,8 +20,6 @@ public class ModelConverter {
             .withSongCount(playlist.getSongCount())
             .withTags(Lists.newArrayList(playlist.getTags()))
             .build();
-        // fixme: it doesn't have a '.withSongList()' method apart of the builder ...
-        //  do we think this needs to be updated? ... right off the bat, yes
     }
 
 }

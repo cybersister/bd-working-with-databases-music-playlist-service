@@ -122,9 +122,18 @@ public class PlaylistModel {
         }
 
         public Builder withTags(List<String> tagsToUse) {
-            this.tags = tagsToUse;
+            if (tagsToUse.isEmpty()) {
+                this.tags = null;
+            } else {
+                this.tags = tagsToUse;
+            }
+            // todo (DONE): because dynamodb cannot store empty lists, we must instead pass <null> for the
+            //  value of tags if the list would be empty
             return this;
         }
+
+        // we do not want to expose the 'songList' directly to clients/customers
+        // we are specifically leaving 'songList' out of this <PlaylistModel> object to protect that data
 
         public PlaylistModel build() {
             return new PlaylistModel(this);
