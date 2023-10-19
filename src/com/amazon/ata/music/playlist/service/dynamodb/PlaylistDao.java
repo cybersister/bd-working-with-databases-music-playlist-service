@@ -3,7 +3,14 @@ package com.amazon.ata.music.playlist.service.dynamodb;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.exceptions.PlaylistNotFoundException;
 
+import com.amazon.ata.music.playlist.service.util.MusicPlaylistServiceUtils;
+import com.amazon.ata.test.assertions.PlantUmlClassDiagramAssertions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.google.common.collect.Lists;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * Accesses data for a playlist using {@link Playlist} to represent the model in DynamoDB.
@@ -37,6 +44,37 @@ public class PlaylistDao {
         return playlist;
     }
 
-    // todo: implement <savePlaylist()> method
+    public Playlist savePlaylist(String name, String customerId, List<String> tags) {
+        MusicPlaylistServiceUtils.isValidString(customerId);
+        MusicPlaylistServiceUtils.isValidString(name);
+
+        Playlist playlist = new Playlist();
+        playlist.setName(name);
+        playlist.setCustomerId(customerId);
+        playlist.setId(MusicPlaylistServiceUtils.generatePlaylistId());
+        playlist.setSongList(new ArrayList<>());
+        // empty list
+
+        if (tags == null) {
+            playlist.setTags(new HashSet<>());
+        } else {
+            playlist.setTags(new HashSet<>(tags));
+        }
+
+        this.dynamoDbMapper.save(playlist);
+
+        return playlist;
+    }
+
+    /*
+    private String name;
+    private String customerId;
+    private List<String> tags;
+    */
+
+    // todo: "Returns the new playlist, including a unique playlist ID assigned by the Music Playlist
+    //  Service." ...
+
+    //
 
 }

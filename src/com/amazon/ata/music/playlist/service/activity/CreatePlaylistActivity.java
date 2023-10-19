@@ -1,5 +1,7 @@
 package com.amazon.ata.music.playlist.service.activity;
 
+import com.amazon.ata.music.playlist.service.converters.ModelConverter;
+import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.models.requests.CreatePlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.CreatePlaylistResult;
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
@@ -9,6 +11,8 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.List;
 
 /**
  * Implementation of the CreatePlaylistActivity for the MusicPlaylistService's CreatePlaylist API.
@@ -49,23 +53,17 @@ public class CreatePlaylistActivity implements
 
         log.info("Received CreatePlaylistRequest {}", createPlaylistRequest);
 
+        String savedName = createPlaylistRequest.getName();
+        String savedCustomerId = createPlaylistRequest.getCustomerId();
+        List<String> savedTags = createPlaylistRequest.getTags();
+
+        Playlist playlist = playlistDao.savePlaylist(savedName, savedCustomerId, savedTags);
+
+        PlaylistModel playlistModel = new ModelConverter().toPlaylistModel(playlist);
+
         return CreatePlaylistResult.builder()
-                .withPlaylist(new PlaylistModel())
+                .withPlaylist(playlistModel)
                 .build();
-
-        // todo: this doesn't seem like it's doing anything ...
-        //  it's creating a new playlist from scratch without referencing the 'createPlaylistRequest'
-        //  argument ... it's logging it
-
-        // todo: where is the utility class validation method being used?
-        //  the method to generate a new, unique playlist id?
-
-        // todo: validate that the provided customer id and playlist name do not contain any invalid
-        //  characters -> (") (') (\) ...
-        //  throw an InvalidAttributeValueException if any of those characters show up
-
-        // todo: do not want to store duplicate tags, choose a data structure that can provide this
-        //  behavior
 
     }
 

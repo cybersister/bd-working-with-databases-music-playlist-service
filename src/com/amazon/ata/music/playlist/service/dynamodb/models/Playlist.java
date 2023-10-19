@@ -25,8 +25,7 @@ public class Playlist {
     private List<AlbumTrack> songList;
 
     public Playlist() {
-        songList = new ArrayList<>();
-        // fixme: idk if i did this 'songList' shit right ...
+//        songList = new ArrayList<>();
     }
 
     @DynamoDBHashKey(attributeName = "id")

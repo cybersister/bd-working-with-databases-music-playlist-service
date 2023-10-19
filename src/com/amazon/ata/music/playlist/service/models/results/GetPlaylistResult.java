@@ -3,6 +3,7 @@ package com.amazon.ata.music.playlist.service.models.results;
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 
 public class GetPlaylistResult {
+
     private PlaylistModel playlist;
 
     public GetPlaylistResult(Builder builder) {
@@ -17,9 +18,12 @@ public class GetPlaylistResult {
         this.playlist = playlist;
     }
 
-    public static Builder builder() {return new Builder();}
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static final class Builder {
+
         private PlaylistModel playlist;
 
         public Builder withPlaylist(PlaylistModel playlistToUse) {
@@ -27,6 +31,10 @@ public class GetPlaylistResult {
             return this;
         }
 
-        public GetPlaylistResult build() {return new GetPlaylistResult(this);}
+        public GetPlaylistResult build() {
+            return new GetPlaylistResult(this);
+        }
+
     }
+
 }

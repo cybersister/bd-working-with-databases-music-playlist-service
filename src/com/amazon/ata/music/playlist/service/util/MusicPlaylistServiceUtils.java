@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.regex.Pattern;
 
 public final class MusicPlaylistServiceUtils {
+
     private static final Pattern INVALID_CHARACTER_PATTERN = Pattern.compile("[\"\'\\\\]");
     // package private for testing
     static final int PLAYLIST_ID_LENGTH = 5;
@@ -31,4 +32,5 @@ public final class MusicPlaylistServiceUtils {
     public static String generatePlaylistId() {
         return RandomStringUtils.randomAlphanumeric(PLAYLIST_ID_LENGTH);
     }
+
 }
