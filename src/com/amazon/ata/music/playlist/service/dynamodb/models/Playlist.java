@@ -7,7 +7,9 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Represents a record in the playlists table.
@@ -16,7 +18,22 @@ import java.util.List;
 public class Playlist {
 
     private String id;
+    private String name;
+    private String customerId;
+    private Integer songCount;
+    private Set<String> tags;
     private List<AlbumTrack> songList;
+
+    public Playlist(String id, String name, String customerId, Integer songCount, Set<String> tags) {
+        this.id = id;
+        this.name = name;
+        this.customerId = customerId;
+        this.songCount = songCount;
+        this.tags = tags;
+
+        songList = new ArrayList<>();
+        // fixme: idk if i did this 'songList' shit right ...
+    }
 
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {
@@ -25,6 +42,42 @@ public class Playlist {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @DynamoDBAttribute(attributeName = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @DynamoDBAttribute(attributeName = "customerId")
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    @DynamoDBAttribute(attributeName = "songCount")
+    public Integer getSongCount() {
+        return songCount;
+    }
+
+    public void setSongCount(Integer songCount) {
+        this.songCount = songCount;
+    }
+
+    @DynamoDBAttribute(attributeName = "tags")
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
     }
 
     // PARTICIPANTS: You do not need to modify the songList getters/setters or annotations
