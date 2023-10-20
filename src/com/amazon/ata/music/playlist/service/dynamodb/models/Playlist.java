@@ -24,9 +24,7 @@ public class Playlist {
     private Set<String> tags;
     private List<AlbumTrack> songList;
 
-    public Playlist() {
-//        songList = new ArrayList<>();
-    }
+    public Playlist() {}
 
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {

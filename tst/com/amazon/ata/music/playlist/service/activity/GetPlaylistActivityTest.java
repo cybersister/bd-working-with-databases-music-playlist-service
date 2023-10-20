@@ -8,8 +8,10 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import javax.inject.Inject;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,6 +23,7 @@ public class GetPlaylistActivityTest {
     @Mock
     private PlaylistDao playlistDao;
 
+    @InjectMocks
     private GetPlaylistActivity getPlaylistActivity;
 
     @BeforeEach

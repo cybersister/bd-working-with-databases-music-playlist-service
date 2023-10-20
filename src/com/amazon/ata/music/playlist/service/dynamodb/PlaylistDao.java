@@ -1,6 +1,7 @@
 package com.amazon.ata.music.playlist.service.dynamodb;
 
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
+import com.amazon.ata.music.playlist.service.exceptions.InvalidAttributeValueException;
 import com.amazon.ata.music.playlist.service.exceptions.PlaylistNotFoundException;
 
 import com.amazon.ata.music.playlist.service.util.MusicPlaylistServiceUtils;
@@ -45,8 +46,14 @@ public class PlaylistDao {
     }
 
     public Playlist savePlaylist(String name, String customerId, List<String> tags) {
-        MusicPlaylistServiceUtils.isValidString(customerId);
-        MusicPlaylistServiceUtils.isValidString(name);
+        boolean isCustomerIdValid = MusicPlaylistServiceUtils.isValidString(customerId);
+        boolean isNameValid = MusicPlaylistServiceUtils.isValidString(name);
+
+        if (!isCustomerIdValid) {
+            throw new InvalidAttributeValueException("Given Customer ID: " + customerId + "is invalid.");
+        } else if (!isNameValid) {
+            throw new InvalidAttributeValueException("Given Name: " + name + "is invalid.");
+        }
 
         Playlist playlist = new Playlist();
         playlist.setName(name);
@@ -55,7 +62,7 @@ public class PlaylistDao {
         playlist.setSongList(new ArrayList<>());
         // empty list
 
-        if (tags == null) {
+        if ((tags == null) || tags.isEmpty()) {
             playlist.setTags(new HashSet<>());
         } else {
             playlist.setTags(new HashSet<>(tags));
@@ -65,16 +72,5 @@ public class PlaylistDao {
 
         return playlist;
     }
-
-    /*
-    private String name;
-    private String customerId;
-    private List<String> tags;
-    */
-
-    // todo: "Returns the new playlist, including a unique playlist ID assigned by the Music Playlist
-    //  Service." ...
-
-    //
 
 }
