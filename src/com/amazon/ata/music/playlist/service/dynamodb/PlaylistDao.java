@@ -62,8 +62,10 @@ public class PlaylistDao {
         playlist.setSongList(new ArrayList<>());
         // empty list
 
-        if ((tags == null) || tags.isEmpty()) {
+        if (tags == null) {
             playlist.setTags(new HashSet<>());
+        } else if (tags.isEmpty()) {
+            throw new InvalidAttributeValueException("The List of tags cannot be empty.");
         } else {
             playlist.setTags(new HashSet<>(tags));
         }

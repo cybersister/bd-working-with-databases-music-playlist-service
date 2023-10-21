@@ -5,6 +5,10 @@ import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class ModelConverter {
 
     /**

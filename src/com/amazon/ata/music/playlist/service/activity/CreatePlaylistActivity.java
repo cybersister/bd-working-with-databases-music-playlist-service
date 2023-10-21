@@ -12,6 +12,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,7 +56,13 @@ public class CreatePlaylistActivity implements
 
         String savedName = createPlaylistRequest.getName();
         String savedCustomerId = createPlaylistRequest.getCustomerId();
-        List<String> savedTags = createPlaylistRequest.getTags();
+
+        List<String> savedTags;
+        if (createPlaylistRequest.getTags() == null) {
+            savedTags = new ArrayList<>();
+        } else {
+            savedTags = createPlaylistRequest.getTags();
+        }
 
         Playlist playlist = playlistDao.savePlaylist(savedName, savedCustomerId, savedTags);
 

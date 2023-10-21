@@ -8,7 +8,6 @@ import com.amazon.ata.music.playlist.service.models.requests.CreatePlaylistReque
 import com.amazon.ata.music.playlist.service.models.results.CreatePlaylistResult;
 import com.amazon.ata.music.playlist.service.util.MusicPlaylistServiceUtils;
 import com.beust.jcommander.internal.Lists;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,7 +16,6 @@ import org.mockito.Mock;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
@@ -70,7 +68,7 @@ public class CreatePlaylistActivityTest {
 //******************************************************************************************************************
 
     @Test
-    public void handleRequest_createPlaylistValidParameters_returnsValidPlaylist() {
+    public void handleRequest_validParameters_returnsPlaylist() {
         // GIVEN
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
@@ -104,41 +102,7 @@ public class CreatePlaylistActivityTest {
     }
 
     @Test
-    public void handleRequest_createPlaylistValidParametersAndNullTags_returnsValidPlaylist() {
-        // GIVEN
-        CreatePlaylistRequest request = CreatePlaylistRequest.builder()
-                .withName(validName)
-                .withCustomerId(validCustomerId)
-                .withTags(nullListOfTags)
-                .build();
-
-        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount,
-                nullListOfTags, emptySongList);
-        // calling helper method
-
-        when(playlistDao.savePlaylist(validName, validCustomerId, nullListOfTags))
-                .thenReturn(playlist);
-
-        // WHEN
-        CreatePlaylistResult result = createPlaylistActivity.handleRequest(request, null);
-
-        // THEN
-        verify(playlistDao).savePlaylist(validName, validCustomerId, nullListOfTags);
-
-        assertEquals(randomUUID, result.getPlaylist().getId(),
-                "Playlist ID's should be the same.");
-        assertEquals(validName, result.getPlaylist().getName(),
-                "Playlist names should be the same.");
-        assertEquals(validCustomerId, result.getPlaylist().getCustomerId(),
-                "Playlist customer ID's should be the same.");
-        assertEquals(zeroSongCount, result.getPlaylist().getSongCount(),
-                "Playlist song counts should be the same.");
-        assertEquals(nullListOfTags, result.getPlaylist().getTags(),
-                "Playlist tags should be the same.");
-    }
-
-    @Test
-    public void handleRequest_createPlaylistInvalidCustomerId_throwsInvalidAttributeValueException() {
+    public void handleRequest_invalidCustomerId_throwsInvalidAttributeValueException() {
         // GIVEN
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
@@ -158,7 +122,7 @@ public class CreatePlaylistActivityTest {
     }
 
     @Test
-    public void handleRequest_createPlaylistInvalidName_throwsInvalidAttributeValueException() {
+    public void handleRequest_invalidName_throwsInvalidAttributeValueException() {
         // GIVEN
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(invalidName)
@@ -177,8 +141,10 @@ public class CreatePlaylistActivityTest {
         verify(playlistDao).savePlaylist(request.getName(), request.getCustomerId(), request.getTags());
     }
 
+//******************************************************************************************************************
+
     @Test
-    public void handleRequest_createPlaylistValidParameters_returnsEmptyList() {
+    public void handleRequest_validParameters_returnsEmptySongList() {
         // GIVEN
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
@@ -201,9 +167,10 @@ public class CreatePlaylistActivityTest {
 
         assertTrue(playlist.getSongList().isEmpty());
     }
+    // fixme
 
     @Test
-    public void handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylistNullTags() {
+    public void handleRequest_validParametersNoListOfTags_returnsPlaylistNullTags() {
         // GIVEN
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
@@ -227,7 +194,45 @@ public class CreatePlaylistActivityTest {
         assertEquals(null, result.getPlaylist().getTags(),
                 "Playlist tags should be null.");
     }
+    // fixme
 
+    @Test
+    public void handleRequest_validParametersNullListOfTags_returnsPlaylistEmptySetOfTags() {
+        // GIVEN
+        CreatePlaylistRequest request = CreatePlaylistRequest.builder()
+                .withName(validName)
+                .withCustomerId(validCustomerId)
+                .withTags(nullListOfTags)
+                .build();
+
+        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount,
+                nullListOfTags, emptySongList);
+        // calling helper method
+
+        when(playlistDao.savePlaylist(validName, validCustomerId, nullListOfTags))
+                .thenReturn(playlist);
+
+        // when we create the playlist with a <null> 'listOfTags' object, we create a playlist with ...
+        // ... an empty set of tags
+
+        // WHEN
+        CreatePlaylistResult result = createPlaylistActivity.handleRequest(request, null);
+
+        // THEN
+        verify(playlistDao).savePlaylist(validName, validCustomerId, nullListOfTags);
+
+        assertEquals(randomUUID, result.getPlaylist().getId(),
+                "Playlist ID's should be the same.");
+        assertEquals(validName, result.getPlaylist().getName(),
+                "Playlist names should be the same.");
+        assertEquals(validCustomerId, result.getPlaylist().getCustomerId(),
+                "Playlist customer ID's should be the same.");
+        assertEquals(zeroSongCount, result.getPlaylist().getSongCount(),
+                "Playlist song counts should be the same.");
+        assertEquals(emptyListOfTags, result.getPlaylist().getTags(),
+                "Playlist tags should be the same.");
+    }
+    // fixme
 
 //******************************************************************************************************************
 
