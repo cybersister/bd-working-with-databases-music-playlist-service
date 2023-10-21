@@ -64,7 +64,6 @@ public class CreatePlaylistActivity implements
         return CreatePlaylistResult.builder()
                 .withPlaylist(playlistModel)
                 .build();
-
     }
 
 }

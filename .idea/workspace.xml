@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivityTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/models/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/models/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/GetPlaylistActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/GetPlaylistActivityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/models/results/CreatePlaylistResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/models/results/CreatePlaylistResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +59,8 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylist">
-    <configuration name="CreatePlaylistActivityTest.handleRequest_CreatePlaylistValidParameters_returnsEmptyList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.CreatePlaylistActivityTest">
+    <configuration name="CreatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -73,7 +73,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.activity.CreatePlaylistActivityTest.handleRequest_CreatePlaylistValidParameters_returnsEmptyList&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.CreatePlaylistActivityTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -129,6 +129,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="CreatePlaylistActivityTest.handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylistNullTags" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylistNullTags&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="CreatePlaylistActivityTest.handleRequest_createPlaylistValidParameters_returnsEmptyList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -152,44 +175,22 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CreatePlaylistActivityTest.handleRequest_createPlaylistValidParameters_returnsValidPlaylist" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.activity.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParameters_returnsValidPlaylist&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="aws.lambda" factoryName="Remote">
-      <option name="credentialProviderId" />
-      <option name="regionId" />
-      <option name="functionName" />
-      <option name="input" />
-      <option name="inputIsFile" value="false" />
+    <configuration default="true" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CreatePlaylistActivityTest" />
+        <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylistNullTags" />
+        <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParametersAndNullTags_returnsValidPlaylist" />
         <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylist" />
         <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParameters_returnsEmptyList" />
-        <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParametersAndNullTags_returnsValidPlaylist" />
-        <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_createPlaylistValidParameters_returnsValidPlaylist" />
-        <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_CreatePlaylistValidParameters_returnsEmptyList" />
       </list>
     </recent_temporary>
   </component>
@@ -216,15 +217,18 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivityTest.java</url>
-          <line>226</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.amazon.ata.music.playlist.service.models.PlaylistModel" memberName="tags" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="request.getTags()" language="JAVA" />
+        <watch expression="playlist.getTags()" language="JAVA" />
+        <watch expression="result.getPlaylist().getTags()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

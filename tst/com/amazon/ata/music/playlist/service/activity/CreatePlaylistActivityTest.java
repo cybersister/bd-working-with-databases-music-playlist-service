@@ -112,8 +112,8 @@ public class CreatePlaylistActivityTest {
                 .withTags(nullListOfTags)
                 .build();
 
-        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount, nullListOfTags,
-                emptySongList);
+        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount,
+                nullListOfTags, emptySongList);
         // calling helper method
 
         when(playlistDao.savePlaylist(validName, validCustomerId, nullListOfTags))
@@ -203,7 +203,7 @@ public class CreatePlaylistActivityTest {
     }
 
     @Test
-    public void handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylist() {
+    public void handleRequest_createPlaylistValidParametersNoListOfTags_returnsValidPlaylistNullTags() {
         // GIVEN
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
@@ -224,9 +224,8 @@ public class CreatePlaylistActivityTest {
         // THEN
         verify(playlistDao).savePlaylist(validName, validCustomerId, emptyListOfTags);
 
-        assertTrue(result.getPlaylist().getTags().isEmpty(),
-                "List of Playlist tags should be empty.");
-        // fixme: <getTags()> is returning <null> instead of an empty list and it is driving me crazy
+        assertEquals(null, result.getPlaylist().getTags(),
+                "Playlist tags should be null.");
     }
 
 
