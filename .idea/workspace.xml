@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="" />
+    <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +55,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.PlaylistDaoTest">
+  <component name="RunManager" selected="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]">
     <configuration name="CreatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -77,7 +79,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CreatePlaylistActivityTest.handleRequest_validParametersWithNullListOfTags_returnsPlaylistWithEmptyListOfTags" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MT1DesignClassDiagramIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -90,7 +92,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.activity.CreatePlaylistActivityTest.handleRequest_validParametersWithNullListOfTags_returnsPlaylistWithEmptyListOfTags&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT1DesignClassDiagramIntrospectionTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -100,7 +102,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CreatePlaylistActivityTest.handleRequest_validParameters_returnsPlaylistWithEmptySongList" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MT1DesignSequenceDiagramIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -113,7 +115,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.activity.CreatePlaylistActivityTest.handleRequest_validParameters_returnsPlaylistWithEmptySongList&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT1DesignSequenceDiagramIntrospectionTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -169,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]" />
+        <item itemvalue="Gradle.MT1DesignSequenceDiagramIntrospectionTests" />
+        <item itemvalue="Gradle.MT1DesignClassDiagramIntrospectionTests" />
         <item itemvalue="Gradle.PlaylistDaoTest" />
         <item itemvalue="Gradle.CreatePlaylistActivityTest" />
-        <item itemvalue="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]" />
-        <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_validParameters_returnsPlaylistWithEmptySongList" />
-        <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_validParametersWithNullListOfTags_returnsPlaylistWithEmptyListOfTags" />
       </list>
     </recent_temporary>
   </component>
