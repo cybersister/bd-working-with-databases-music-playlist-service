@@ -43,7 +43,6 @@ public class CreatePlaylistActivity implements
         DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
         this.playlistDao = new PlaylistDao(dynamoDBMapper);
     }
-    // fixme ... (1) for lambda function to work
     // strictly for the aws lambda function ... requires default no-argument constructor
 
     /**
