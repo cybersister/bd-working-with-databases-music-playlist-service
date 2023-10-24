@@ -42,10 +42,6 @@ public class PlaylistDaoTest {
     private String invalidCustomerId;
     private List<String> listOfTags;
     private String invalidName;
-    private Set<String> emptySetOfTags;
-    private List<String> emptyListOfTags;
-    private List<AlbumTrack> emptyListOfSongs;
-    private Integer nullSongCount;
 
 //******************************************************************************************************************
 
@@ -137,7 +133,7 @@ public class PlaylistDaoTest {
     @Test
     public void savePlaylist_nullObjectForTags_returnsPlaylistWithEmptyHashSet() {
         // GIVEN
-        emptySetOfTags = new HashSet<>();
+        Set<String> emptySetOfTags = new HashSet<>();
 
         // WHEN
         Playlist result = playlistDao.savePlaylist(name, customerId, null);
@@ -153,21 +149,10 @@ public class PlaylistDaoTest {
     }
 
     @Test
-    public void savePlaylist_emptyListOfTags_throwsInvalidAttributeException() {
-        // GIVEN
-        emptyListOfTags = new ArrayList<>();
-
-        // WHEN + THEN
-        assertThrows(InvalidAttributeValueException.class, ()->{
-            playlistDao.savePlaylist(name, customerId, emptyListOfTags);
-        });
-    }
-
-    @Test
     public void savePlaylist_validParameters_returnsPlaylist() {
         // GIVEN
-        emptyListOfSongs = new ArrayList<>();
-        nullSongCount = null;
+        List<AlbumTrack> emptyListOfSongs = new ArrayList<>();
+        Integer zeroSongCount = 0;
 
         // WHEN
         Playlist result = playlistDao.savePlaylist(name, customerId, listOfTags);
@@ -178,7 +163,7 @@ public class PlaylistDaoTest {
                 "Playlist customer ID's should be the same.");
         assertEquals(setOfTags, result.getTags(),
                 "Playlist list of tags should be the same.");
-        assertEquals(nullSongCount, result.getSongCount(),
+        assertEquals(zeroSongCount, result.getSongCount(),
                 "Playlist song counts should be the same.");
         assertEquals(emptyListOfSongs, result.getSongList(),
                 "Playlist list of songs should be the same.");

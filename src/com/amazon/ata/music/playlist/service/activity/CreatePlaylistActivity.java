@@ -58,13 +58,6 @@ public class CreatePlaylistActivity implements
         String savedCustomerId = createPlaylistRequest.getCustomerId();
         List<String> savedTags = createPlaylistRequest.getTags();
 
-//        if (createPlaylistRequest.getTags() == null) {
-//            savedTags = null;
-//        } else {
-//            savedTags = createPlaylistRequest.getTags();
-//        }
-        // the list of tags is either a 'non-empty list' or 'null' ... NO IN BETWEEN
-
         Playlist playlist = playlistDao.savePlaylist(savedName, savedCustomerId, savedTags);
 
         PlaylistModel playlistModel = new ModelConverter().toPlaylistModel(playlist);
