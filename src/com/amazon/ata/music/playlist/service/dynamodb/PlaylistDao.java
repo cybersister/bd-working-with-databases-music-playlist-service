@@ -50,9 +50,9 @@ public class PlaylistDao {
         boolean isNameValid = MusicPlaylistServiceUtils.isValidString(name);
 
         if (!isCustomerIdValid) {
-            throw new InvalidAttributeValueException("Given Customer ID: " + customerId + "is invalid.");
+            throw new InvalidAttributeValueException("Given Customer ID: " + customerId + " is invalid.");
         } else if (!isNameValid) {
-            throw new InvalidAttributeValueException("Given Name: " + name + "is invalid.");
+            throw new InvalidAttributeValueException("Given Name: " + name + " is invalid.");
         }
 
         Playlist playlist = new Playlist();
