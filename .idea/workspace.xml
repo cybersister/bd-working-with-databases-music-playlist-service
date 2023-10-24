@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/converters/ModelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/converters/ModelConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/models/PlaylistModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/models/PlaylistModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDaoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
