@@ -1,5 +1,6 @@
 package com.amazon.ata.music.playlist.service.activity;
 
+import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazon.ata.music.playlist.service.converters.ModelConverter;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.models.requests.CreatePlaylistRequest;
@@ -7,6 +8,8 @@ import com.amazon.ata.music.playlist.service.models.results.CreatePlaylistResult
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 import com.amazon.ata.music.playlist.service.dynamodb.PlaylistDao;
 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
@@ -34,6 +37,14 @@ public class CreatePlaylistActivity implements
     public CreatePlaylistActivity(PlaylistDao playlistDao) {
         this.playlistDao = playlistDao;
     }
+
+    public CreatePlaylistActivity() {
+        AmazonDynamoDB amazonDynamoDB = DynamoDbClientProvider.getDynamoDBClient();
+        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
+        this.playlistDao = new PlaylistDao(dynamoDBMapper);
+    }
+    // fixme ... (1) for lambda function to work
+    // strictly for the aws lambda function ... requires default no-argument constructor
 
     /**
      * This method handles the incoming request by persisting a new playlist with the provided playlist

@@ -109,7 +109,7 @@ public class CreatePlaylistActivityTest {
         // WHEN
         when(playlistDao.savePlaylist(validName, invalidCustomerId, listOfTags))
                 .thenThrow(new InvalidAttributeValueException("Given Customer ID: "
-                        + request.getCustomerId() + "is invalid."));
+                        + request.getCustomerId() + " is invalid."));
         // THEN
         assertThrows(InvalidAttributeValueException.class, ()->{
             playlistDao.savePlaylist(validName, invalidCustomerId, listOfTags);
@@ -131,7 +131,7 @@ public class CreatePlaylistActivityTest {
         // WHEN
         when(playlistDao.savePlaylist(invalidName, validCustomerId, listOfTags))
                 .thenThrow(new InvalidAttributeValueException("Given Customer ID: "
-                        + request.getCustomerId() + "is invalid."));
+                        + request.getCustomerId() + " is invalid."));
         // THEN
         assertThrows(InvalidAttributeValueException.class, ()->{
             playlistDao.savePlaylist(invalidName, validCustomerId, listOfTags);
