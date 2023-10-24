@@ -1,5 +1,6 @@
 package com.amazon.ata.music.playlist.service.activity;
 
+import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazon.ata.music.playlist.service.models.requests.GetPlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.GetPlaylistResult;
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
@@ -7,6 +8,8 @@ import com.amazon.ata.music.playlist.service.converters.ModelConverter;
 import com.amazon.ata.music.playlist.service.dynamodb.PlaylistDao;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
@@ -30,6 +33,13 @@ public class GetPlaylistActivity implements RequestHandler<GetPlaylistRequest, G
     public GetPlaylistActivity(PlaylistDao playlistDao) {
         this.playlistDao = playlistDao;
     }
+
+    public GetPlaylistActivity() {
+        AmazonDynamoDB amazonDynamoDB = DynamoDbClientProvider.getDynamoDBClient();
+        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
+        this.playlistDao = new PlaylistDao(dynamoDBMapper);
+    }
+    // fixme ... (3) for lambda function to work
 
     /**
      * This method handles the incoming request by retrieving the playlist from the database.
