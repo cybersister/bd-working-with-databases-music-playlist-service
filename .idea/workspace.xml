@@ -55,7 +55,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]">
+  <component name="RunManager" selected="Gradle.PlaylistDaoTest">
     <configuration name="CreatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -169,19 +169,11 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="aws.lambda" factoryName="Remote">
-      <option name="credentialProviderId" />
-      <option name="regionId" />
-      <option name="functionName" />
-      <option name="input" />
-      <option name="inputIsFile" value="false" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]" />
         <item itemvalue="Gradle.PlaylistDaoTest" />
         <item itemvalue="Gradle.CreatePlaylistActivityTest" />
+        <item itemvalue="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]" />
         <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_validParameters_returnsPlaylistWithEmptySongList" />
         <item itemvalue="Gradle.CreatePlaylistActivityTest.handleRequest_validParametersWithNullListOfTags_returnsPlaylistWithEmptyListOfTags" />
       </list>
