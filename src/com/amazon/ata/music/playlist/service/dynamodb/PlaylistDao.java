@@ -62,9 +62,9 @@ public class PlaylistDao {
         playlist.setSongList(new ArrayList<>());
         playlist.setSongCount(0);
 
-        if (tags.equals(new HashSet<>().add("null"))) {
-            playlist.setTags(new HashSet<>());
-        }
+//        if (tags.equals(new HashSet<>().add("null"))) {
+//            playlist.setTags(new HashSet<>());
+//        }
         // fixme ... (2) for lambda function to work
         // a string set may not be empty or represented as <null> in dynamodb ... she don't like
         // it causes errors ... i set up a specific case to "test" a "null" object
