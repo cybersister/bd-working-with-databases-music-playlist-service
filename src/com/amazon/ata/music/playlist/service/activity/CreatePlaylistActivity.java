@@ -56,13 +56,14 @@ public class CreatePlaylistActivity implements
 
         String savedName = createPlaylistRequest.getName();
         String savedCustomerId = createPlaylistRequest.getCustomerId();
+        List<String> savedTags = createPlaylistRequest.getTags();
 
-        List<String> savedTags;
-        if (createPlaylistRequest.getTags() == null) {
-            savedTags = new ArrayList<>();
-        } else {
-            savedTags = createPlaylistRequest.getTags();
-        }
+//        if (createPlaylistRequest.getTags() == null) {
+//            savedTags = null;
+//        } else {
+//            savedTags = createPlaylistRequest.getTags();
+//        }
+        // the list of tags is either a 'non-empty list' or 'null' ... NO IN BETWEEN
 
         Playlist playlist = playlistDao.savePlaylist(savedName, savedCustomerId, savedTags);
 

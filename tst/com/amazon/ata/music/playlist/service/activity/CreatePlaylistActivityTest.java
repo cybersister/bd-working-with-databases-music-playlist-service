@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
@@ -40,6 +41,7 @@ public class CreatePlaylistActivityTest {
     private List<String> listOfTags;
     private List<String> nullListOfTags;
     private List<String> emptyListOfTags;
+    private Set<String> emptySetOfTags;
     private Integer zeroSongCount;
     private List<AlbumTrack> emptySongList;
     private Playlist playlist;
@@ -53,11 +55,8 @@ public class CreatePlaylistActivityTest {
 
         randomUUID = MusicPlaylistServiceUtils.generatePlaylistId();
         validName = "october 2023";
-        invalidName = "october\\2023";
         validCustomerId = "maddiodie";
-        invalidCustomerId = "'maddiodie'";
         listOfTags = Lists.newArrayList("monthly");
-        nullListOfTags = null;
         emptyListOfTags = new ArrayList<>();
         zeroSongCount = 0;
         emptySongList = new ArrayList<>();
@@ -68,7 +67,7 @@ public class CreatePlaylistActivityTest {
 //******************************************************************************************************************
 
     @Test
-    public void handleRequest_validParameters_returnsPlaylist() {
+    public void handleRequest_validParameters_returnsPlaylistWithEmptySongList() {
         // GIVEN
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
@@ -76,7 +75,7 @@ public class CreatePlaylistActivityTest {
                 .withTags(listOfTags)
                 .build();
 
-        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount, listOfTags,
+        playlist = helperMethod(randomUUID, validName, validCustomerId, zeroSongCount, listOfTags,
                 emptySongList);
         // calling helper method
 
@@ -87,8 +86,6 @@ public class CreatePlaylistActivityTest {
         CreatePlaylistResult result = createPlaylistActivity.handleRequest(request, null);
 
         // THEN
-        verify(playlistDao).savePlaylist(validName, validCustomerId, listOfTags);
-
         assertEquals(randomUUID, result.getPlaylist().getId(),
                 "Playlist ID's should be the same.");
         assertEquals(validName, result.getPlaylist().getName(),
@@ -99,11 +96,14 @@ public class CreatePlaylistActivityTest {
                 "Playlist song counts should be the same.");
         assertEquals(listOfTags, result.getPlaylist().getTags(),
                 "Playlist tags should be the same.");
+        assertTrue(playlist.getSongList().isEmpty());
     }
 
     @Test
     public void handleRequest_invalidCustomerId_throwsInvalidAttributeValueException() {
         // GIVEN
+        invalidCustomerId = "'maddiodie'";
+
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
                 .withCustomerId(invalidCustomerId)
@@ -118,12 +118,14 @@ public class CreatePlaylistActivityTest {
         assertThrows(InvalidAttributeValueException.class, ()->{
             playlistDao.savePlaylist(validName, invalidCustomerId, listOfTags);
         });
-        verify(playlistDao).savePlaylist(request.getName(), request.getCustomerId(), request.getTags());
+        verify(playlistDao).savePlaylist(validName, invalidCustomerId, listOfTags);
     }
 
     @Test
     public void handleRequest_invalidName_throwsInvalidAttributeValueException() {
         // GIVEN
+        invalidName = "october\\2023";
+
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(invalidName)
                 .withCustomerId(validCustomerId)
@@ -138,60 +140,36 @@ public class CreatePlaylistActivityTest {
         assertThrows(InvalidAttributeValueException.class, ()->{
             playlistDao.savePlaylist(invalidName, validCustomerId, listOfTags);
         });
-        verify(playlistDao).savePlaylist(request.getName(), request.getCustomerId(), request.getTags());
+        verify(playlistDao).savePlaylist(invalidName, validCustomerId, listOfTags);
     }
 
 //******************************************************************************************************************
 
     @Test
-    public void handleRequest_validParameters_returnsEmptySongList() {
+    public void handleRequest_validParametersNullListOfTags_returnsPlaylistWithEmptySetOfTags() {
         // GIVEN
+        nullListOfTags = null;
+        emptySetOfTags = new HashSet<>();
+
         CreatePlaylistRequest request = CreatePlaylistRequest.builder()
                 .withName(validName)
                 .withCustomerId(validCustomerId)
-                .withTags(listOfTags)
+                .withTags(nullListOfTags)
                 .build();
 
-        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount, listOfTags,
-                emptySongList);
-        // calling helper method
+        playlist = helperMethod(randomUUID, validName, validCustomerId, zeroSongCount,
+                nullListOfTags, emptySongList);
 
-        when(playlistDao.savePlaylist(validName, validCustomerId, listOfTags))
+        when(playlistDao.savePlaylist(validName, validCustomerId, nullListOfTags))
                 .thenReturn(playlist);
 
         // WHEN
         CreatePlaylistResult result = createPlaylistActivity.handleRequest(request, null);
 
         // THEN
-        verify(playlistDao).savePlaylist(validName, validCustomerId, listOfTags);
+        verify(playlistDao).savePlaylist(validName, validCustomerId, nullListOfTags);
 
-        assertTrue(playlist.getSongList().isEmpty());
-    }
-    // fixme
-
-    @Test
-    public void handleRequest_validParametersNoListOfTags_returnsPlaylistNullTags() {
-        // GIVEN
-        CreatePlaylistRequest request = CreatePlaylistRequest.builder()
-                .withName(validName)
-                .withCustomerId(validCustomerId)
-                .withTags(emptyListOfTags)
-                .build();
-
-        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount,
-                emptyListOfTags, emptySongList);
-        // calling helper method
-
-        when(playlistDao.savePlaylist(validName, validCustomerId, emptyListOfTags))
-                .thenReturn(playlist);
-
-        // WHEN
-        CreatePlaylistResult result = createPlaylistActivity.handleRequest(request, null);
-
-        // THEN
-        verify(playlistDao).savePlaylist(validName, validCustomerId, emptyListOfTags);
-
-        assertEquals(null, result.getPlaylist().getTags(),
+        assertEquals(emptySetOfTags, result.getPlaylist().getTags(),
                 "Playlist tags should be null.");
     }
     // fixme
@@ -205,7 +183,7 @@ public class CreatePlaylistActivityTest {
                 .withTags(nullListOfTags)
                 .build();
 
-        playlist = helperMethodPlaylist(randomUUID, validName, validCustomerId, zeroSongCount,
+        playlist = helperMethod(randomUUID, validName, validCustomerId, zeroSongCount,
                 nullListOfTags, emptySongList);
         // calling helper method
 
@@ -236,14 +214,14 @@ public class CreatePlaylistActivityTest {
 
 //******************************************************************************************************************
 
-    private Playlist helperMethodPlaylist(String id, String name, String customerId, Integer songCount,
-                                      List<String> tags, List<AlbumTrack> songList) {
+    private Playlist helperMethod(String id, String name, String customerId, Integer songCount,
+                                  List<String> tags, List<AlbumTrack> songList) {
         playlist.setId(id);
         playlist.setName(name);
         playlist.setCustomerId(customerId);
         playlist.setSongCount(songCount);
 
-        if ((tags == null) || tags.isEmpty()) {
+        if (tags == null) {
             playlist.setTags(new HashSet<>());
         } else {
             playlist.setTags(new HashSet<>(tags));

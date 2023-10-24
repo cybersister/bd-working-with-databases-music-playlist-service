@@ -60,12 +60,10 @@ public class PlaylistDao {
         playlist.setCustomerId(customerId);
         playlist.setId(MusicPlaylistServiceUtils.generatePlaylistId());
         playlist.setSongList(new ArrayList<>());
-        // empty list
+        playlist.setSongCount(0);
 
         if (tags == null) {
             playlist.setTags(new HashSet<>());
-        } else if (tags.isEmpty()) {
-            throw new InvalidAttributeValueException("The List of tags cannot be empty.");
         } else {
             playlist.setTags(new HashSet<>(tags));
         }
