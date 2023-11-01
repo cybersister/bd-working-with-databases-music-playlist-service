@@ -62,7 +62,10 @@ class CreatePlaylistActivity implements RequestHandler {
 CreatePlaylistActivity o-- PlaylistDao
 CreatePlaylistActivity ..|> RequestHandler
 
-class InvalidAttributeValueException extends RuntimeException {
+class InvalidAttributeValueException extends InvalidAttributeException {
+}
+
+class InvalidAttributeException extends RuntimeException {
 }
 
 InvalidAttributeValueException <|-- CreatePlaylistActivity
@@ -178,14 +181,18 @@ UpdatePlaylistActivity ..|> RequestHandler
 
 class PlaylistNotFoundException extends RuntimeException {
 }
-class InvalidAttributeValueException extends RuntimeException {
+class InvalidAttributeValueException extends InvalidAttributeException {
 }
-class InvalidAttributeChangeException extends RuntimeException {
+class InvalidAttributeChangeException extends InvalidAttributeException {
+}
+class InvalidAttributeException extends RuntimeException {
 }
 
 PlaylistNotFoundException <|-- UpdatePlaylistActivity
 InvalidAttributeValueException <|-- UpdatePlaylistActivity
 InvalidAttributeChangeException <|-- UpdatePlaylistActivity
+InvalidAttributeChangeException --|> InvalidAttributeException
+InvalidAttributeValueException --|> InvalidAttributeException
 
 class PlaylistDao {
     - dynamoDbMapper: DynamoDBMapper
