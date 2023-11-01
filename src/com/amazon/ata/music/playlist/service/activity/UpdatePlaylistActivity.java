@@ -1,5 +1,7 @@
 package com.amazon.ata.music.playlist.service.activity;
 
+import com.amazon.ata.music.playlist.service.converters.ModelConverter;
+import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 import com.amazon.ata.music.playlist.service.models.requests.UpdatePlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.UpdatePlaylistResult;
@@ -54,11 +56,16 @@ public class UpdatePlaylistActivity implements
 
         log.info("Received UpdatePlaylistRequest {}", updatePlaylistRequest);
 
+        String playlistId = updatePlaylistRequest.getId();
+        String updatedPlaylistName = updatePlaylistRequest.getName();
+        String customerId = updatePlaylistRequest.getCustomerId();
+
+        Playlist playlist = playlistDao.updatePlaylist(playlistId, updatedPlaylistName, customerId);
+        PlaylistModel playlistModel = new ModelConverter().toPlaylistModel(playlist);
+
         return UpdatePlaylistResult.builder()
-                .withPlaylist(new PlaylistModel())
+                .withPlaylist(playlistModel)
                 .build();
-
-
 
     }
 
