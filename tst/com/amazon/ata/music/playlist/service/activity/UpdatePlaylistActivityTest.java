@@ -9,10 +9,8 @@ import com.amazon.ata.music.playlist.service.models.requests.UpdatePlaylistReque
 import com.amazon.ata.music.playlist.service.models.results.UpdatePlaylistResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -23,6 +21,7 @@ public class UpdatePlaylistActivityTest {
 
     @Mock
     private PlaylistDao playlistDao;
+    @InjectMocks
     private UpdatePlaylistActivity updatePlaylistActivity;
 
     @BeforeEach
@@ -35,29 +34,29 @@ public class UpdatePlaylistActivityTest {
     public void handleRequest_goodRequest_updatesPlaylistName() {
         // GIVEN
         String id = "id";
-        String expectedCustomerId = "expectedCustomerId";
-        String expectedName = "new name";
+        String customerId = "customerId";
+        String playlistName = "new name";
 
         UpdatePlaylistRequest request = UpdatePlaylistRequest.builder()
                                             .withId(id)
-                                            .withCustomerId(expectedCustomerId)
-                                            .withName(expectedName)
+                                            .withCustomerId(customerId)
+                                            .withName(playlistName)
                                             .build();
 
-        Playlist startingPlaylist = new Playlist();
-        startingPlaylist.setCustomerId(expectedCustomerId);
-        startingPlaylist.setName("old name");
-        startingPlaylist.setSongCount(0);
+        Playlist endingPlaylist = new Playlist();
+        endingPlaylist.setCustomerId(customerId);
+        endingPlaylist.setName("new name");
+        endingPlaylist.setSongCount(0);
 
-        when(playlistDao.getPlaylist(id)).thenReturn(startingPlaylist);
-//        when(playlistDao.savePlaylist(startingPlaylist)).thenReturn(startingPlaylist);
+        when(playlistDao.updatePlaylist(request.getId(), request.getName(), request.getCustomerId()))
+                .thenReturn(endingPlaylist);
 
         // WHEN
         UpdatePlaylistResult result = updatePlaylistActivity.handleRequest(request, null);
 
         // THEN
-        assertEquals(expectedName, result.getPlaylist().getName());
-        assertEquals(expectedCustomerId, result.getPlaylist().getCustomerId());
+        assertEquals(playlistName, result.getPlaylist().getName());
+        assertEquals(customerId, result.getPlaylist().getCustomerId());
     }
 
     @Test
@@ -68,6 +67,8 @@ public class UpdatePlaylistActivityTest {
                                             .withName("I'm illegal")
                                             .withCustomerId("customerId")
                                             .build();
+        when(playlistDao.updatePlaylist(request.getId(), request.getName(), request.getCustomerId()))
+                .thenThrow(InvalidAttributeValueException.class);
 
         // WHEN + THEN
         assertThrows(InvalidAttributeValueException.class, () ->
@@ -78,16 +79,15 @@ public class UpdatePlaylistActivityTest {
     @Test
     public void handleRequest_playlistDoesNotExist_throwsPlaylistNotFoundException() {
         // GIVEN
-        String id = "id";
         UpdatePlaylistRequest request = UpdatePlaylistRequest.builder()
-                                            .withId(id)
+                                            .withId("different")
                                             .withName("name")
                                             .withCustomerId("customerId")
                                             .build();
+        when(playlistDao.updatePlaylist(request.getId(), request.getName(), request.getCustomerId()))
+                .thenThrow(PlaylistNotFoundException.class);
 
-        when(playlistDao.getPlaylist(id)).thenThrow(new PlaylistNotFoundException());
-
-        // THEN
+        // WHEN + THEN
         assertThrows(PlaylistNotFoundException.class, () ->
                 updatePlaylistActivity.handleRequest(request, null)
         );
@@ -96,19 +96,16 @@ public class UpdatePlaylistActivityTest {
     @Test
     public void handleRequest_customerIdNotMatch_throwsInvalidAttributeChangeException() {
         // GIVEN
-        String id = "id";
         UpdatePlaylistRequest request = UpdatePlaylistRequest.builder()
-                                            .withId(id)
+                                            .withId("id")
                                             .withName("name")
-                                            .withCustomerId("customerId")
+                                            .withCustomerId("different")
                                             .build();
+        when(playlistDao.updatePlaylist(request.getId(), request.getName(),
+                request.getCustomerId()))
+                .thenThrow(InvalidAttributeChangeException.class);
 
-        Playlist differentCustomerIdPlaylist = new Playlist();
-        differentCustomerIdPlaylist.setCustomerId("different");
-
-        when(playlistDao.getPlaylist(id)).thenReturn(differentCustomerIdPlaylist);
-
-        // THEN
+        // WHEN + THEN
         assertThrows(InvalidAttributeChangeException.class, () ->
                 updatePlaylistActivity.handleRequest(request, null)
         );

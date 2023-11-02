@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,53 +56,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.UpdatePlaylistActivityTest.handleRequest_invalidName_throwsInvalidAttributeValueException">
-    <configuration name="MT2DesignIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT2DesignIntrospectionTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="MT2IntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT2IntrospectionTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.UpdatePlaylistActivityTest.handleRequest_goodRequest_updatesPlaylistName">
     <configuration name="UpdatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -119,6 +71,52 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UpdatePlaylistActivityTest.handleRequest_customerIdNotMatch_throwsInvalidAttributeChangeException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest.handleRequest_customerIdNotMatch_throwsInvalidAttributeChangeException&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UpdatePlaylistActivityTest.handleRequest_goodRequest_updatesPlaylistName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest.handleRequest_goodRequest_updatesPlaylistName&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -174,22 +172,21 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <option name="AUTO_RESTART" value="false" />
+    <configuration default="true" type="aws.lambda" factoryName="Remote">
+      <option name="credentialProviderId" />
+      <option name="regionId" />
+      <option name="functionName" />
+      <option name="input" />
+      <option name="inputIsFile" value="false" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_invalidName_throwsInvalidAttributeValueException" />
-        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_playlistDoesNotExist_throwsPlaylistNotFoundException" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_goodRequest_updatesPlaylistName" />
         <item itemvalue="Gradle.UpdatePlaylistActivityTest" />
-        <item itemvalue="Gradle.MT2IntrospectionTests" />
-        <item itemvalue="Gradle.MT2DesignIntrospectionTests" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_customerIdNotMatch_throwsInvalidAttributeChangeException" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_playlistDoesNotExist_throwsPlaylistNotFoundException" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_invalidName_throwsInvalidAttributeValueException" />
       </list>
     </recent_temporary>
   </component>
@@ -220,13 +217,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivityTest.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="2" />
+          <line>54</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java</url>
           <line>62</line>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
