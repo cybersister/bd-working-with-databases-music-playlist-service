@@ -61,6 +61,7 @@ public class UpdatePlaylistActivity implements
         String customerId = updatePlaylistRequest.getCustomerId();
 
         Playlist playlist = playlistDao.updatePlaylist(playlistId, updatedPlaylistName, customerId);
+
         PlaylistModel playlistModel = new ModelConverter().toPlaylistModel(playlist);
 
         return UpdatePlaylistResult.builder()

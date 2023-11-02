@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/exceptions/InvalidAttributeChangeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/exceptions/InvalidAttributeException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/CreatePlaylistActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/exceptions/InvalidAttributeValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/exceptions/InvalidAttributeValueException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,53 +58,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.MT2DesignIntrospectionTests">
-    <configuration name="MT1DesignClassDiagramIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT1DesignClassDiagramIntrospectionTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="MT1DesignSequenceDiagramIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT1DesignSequenceDiagramIntrospectionTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.UpdatePlaylistActivityTest.handleRequest_invalidName_throwsInvalidAttributeValueException">
     <configuration name="MT2DesignIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -131,7 +82,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MT2DesignIntrospectionTests.mt2Design_getClassDiagram_containsExpectedExceptionHierarchy" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MT2IntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -144,7 +95,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT2DesignIntrospectionTests.mt2Design_getClassDiagram_containsExpectedExceptionHierarchy&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT2IntrospectionTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -154,34 +105,91 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="bd-working-with-databases-music-playlist-service-maddiodie [buildZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UpdatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildZip" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="UpdatePlaylistActivityTest.handleRequest_invalidName_throwsInvalidAttributeValueException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest.handleRequest_invalidName_throwsInvalidAttributeValueException&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UpdatePlaylistActivityTest.handleRequest_playlistDoesNotExist_throwsPlaylistNotFoundException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest.handleRequest_playlistDoesNotExist_throwsPlaylistNotFoundException&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_invalidName_throwsInvalidAttributeValueException" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_playlistDoesNotExist_throwsPlaylistNotFoundException" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest" />
+        <item itemvalue="Gradle.MT2IntrospectionTests" />
         <item itemvalue="Gradle.MT2DesignIntrospectionTests" />
-        <item itemvalue="Gradle.MT2DesignIntrospectionTests.mt2Design_getClassDiagram_containsExpectedExceptionHierarchy" />
-        <item itemvalue="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]" />
-        <item itemvalue="Gradle.MT1DesignSequenceDiagramIntrospectionTests" />
-        <item itemvalue="Gradle.MT1DesignClassDiagramIntrospectionTests" />
       </list>
     </recent_temporary>
   </component>
@@ -208,13 +216,20 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="GradleRunConfiguration">
-        <watch expression="request.getTags()" language="JAVA" />
-        <watch expression="playlist.getTags()" language="JAVA" />
-        <watch expression="result.getPlaylist().getTags()" language="JAVA" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tst/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivityTest.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/activity/UpdatePlaylistActivity.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
