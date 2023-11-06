@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
@@ -47,6 +49,7 @@ public class UpdatePlaylistActivityTest {
         endingPlaylist.setCustomerId(customerId);
         endingPlaylist.setName("new name");
         endingPlaylist.setSongCount(0);
+        endingPlaylist.setTags(new HashSet<>());
 
         when(playlistDao.updatePlaylist(request.getId(), request.getName(), request.getCustomerId()))
                 .thenReturn(endingPlaylist);
@@ -107,6 +110,23 @@ public class UpdatePlaylistActivityTest {
 
         // WHEN + THEN
         assertThrows(InvalidAttributeChangeException.class, () ->
+                updatePlaylistActivity.handleRequest(request, null)
+        );
+    }
+
+    @Test
+    public void handleRequest_invalidCustomerId_throwsInvalidAttributeValueException() {
+        // GIVEN
+        UpdatePlaylistRequest request = UpdatePlaylistRequest.builder()
+                .withId("id")
+                .withName("october")
+                .withCustomerId("'customerId'")
+                .build();
+        when(playlistDao.updatePlaylist(request.getId(), request.getName(), request.getCustomerId()))
+                .thenThrow(InvalidAttributeValueException.class);
+
+        // WHEN + THEN
+        assertThrows(InvalidAttributeValueException.class, () ->
                 updatePlaylistActivity.handleRequest(request, null)
         );
     }
