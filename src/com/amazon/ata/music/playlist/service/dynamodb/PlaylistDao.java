@@ -1,6 +1,7 @@
 package com.amazon.ata.music.playlist.service.dynamodb;
 
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
+import com.amazon.ata.music.playlist.service.exceptions.InvalidAttributeChangeException;
 import com.amazon.ata.music.playlist.service.exceptions.InvalidAttributeValueException;
 import com.amazon.ata.music.playlist.service.exceptions.PlaylistNotFoundException;
 
@@ -69,6 +70,53 @@ public class PlaylistDao {
         }
 
         this.dynamoDbMapper.save(playlist);
+
+        return playlist;
+    }
+
+    public Playlist updatePlaylist(String playlistId, String updatedPlaylistName, String customerId) {
+
+        Playlist playlist;
+        try {
+            playlist = getPlaylist(playlistId);
+        } catch (PlaylistNotFoundException ex) {
+            throw new PlaylistNotFoundException("The playlist with the given id" + playlistId
+                    + " does not exist.");
+        }
+        // validate that the provided playlist exists and if it doesn't throw a <PlaylistNotFoundException>
+
+        boolean isCustomerIdValid = MusicPlaylistServiceUtils.isValidString(customerId);
+        if (!isCustomerIdValid) {
+            throw new InvalidAttributeValueException("Given Customer ID: " + customerId + " is invalid.");
+        } else if (!customerId.equals(playlist.getCustomerId())) {
+            throw new InvalidAttributeChangeException("The given customer Id does not match the "
+                    + "customer Id associated with the playlist.");
+        }
+        // validate the provided customer id
+        // ensure it matches the customer id associated with the given playlist and if not throw a ...
+        // ... <InvalidAttributeChangeException> (making an assumption here)
+        // also validate that it doesn't contain any invalid characters, throw a ...
+        // ... <InvalidAttributeValueException> if it fails the validation (DO THIS VALIDATION FIRST)
+
+        boolean isNameValid = MusicPlaylistServiceUtils.isValidString(updatedPlaylistName);
+        if (!isNameValid) {
+            throw new InvalidAttributeValueException("Given Name: " + updatedPlaylistName
+                    + " is invalid.");
+        }
+        // validate that the new updated playlist name doesn't contain any invalid characters
+        // there is a method that already exists for this
+        // throw a <InvalidAttributeValueException> if it fails the validation
+
+        playlist.setName(updatedPlaylistName);
+        // update the given updated playlist name
+
+        this.dynamoDbMapper.save(playlist);
+        // save the updated playlist to dynamodb
+
+        // IF I SAVE SOMETHING IT IS BASED OFF OF THE ID AND NOT THE NAME
+        // THE PLAYLIST ID IS THE HASH KEY/PARTITION KEY
+        // USE THE <DynamoDbMapper.save()> METHOD IN THIS CASE
+        // IT WILL WRITE OVER TOP OF THE ALREADY EXISTING PLAYLIST
 
         return playlist;
     }

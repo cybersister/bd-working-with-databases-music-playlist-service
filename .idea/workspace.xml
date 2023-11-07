@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="" />
+    <list default="true" id="0fad0940-e470-466d-9bf0-ab033580f098" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/amazon/ata/music/playlist/service/dynamodb/PlaylistDao.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +56,7 @@
   }
 }</component>
   <component name="RunManager" selected="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]">
-    <configuration name="CreatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MT2IntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -67,7 +69,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.activity.CreatePlaylistActivityTest&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT2IntrospectionTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -77,7 +79,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MT1DesignClassDiagramIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UpdatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -90,7 +92,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT1DesignClassDiagramIntrospectionTests&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -100,7 +102,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MT1DesignSequenceDiagramIntrospectionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UpdatePlaylistActivityTest.handleRequest_goodRequest_updatesPlaylistName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -113,7 +115,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.tct.MT1DesignSequenceDiagramIntrospectionTests&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest.handleRequest_goodRequest_updatesPlaylistName&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -123,7 +125,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PlaylistDaoTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="UpdatePlaylistActivityTest.handleRequest_invalidCustomerId_throwsInvalidAttributeValueException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -136,7 +138,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.amazon.ata.music.playlist.service.dynamodb.PlaylistDaoTest&quot;" />
+            <option value="&quot;com.amazon.ata.music.playlist.service.activity.UpdatePlaylistActivityTest.handleRequest_invalidCustomerId_throwsInvalidAttributeValueException&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -167,13 +169,22 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.bd-working-with-databases-music-playlist-service-maddiodie [buildZip]" />
-        <item itemvalue="Gradle.MT1DesignSequenceDiagramIntrospectionTests" />
-        <item itemvalue="Gradle.MT1DesignClassDiagramIntrospectionTests" />
-        <item itemvalue="Gradle.PlaylistDaoTest" />
-        <item itemvalue="Gradle.CreatePlaylistActivityTest" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_invalidCustomerId_throwsInvalidAttributeValueException" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest" />
+        <item itemvalue="Gradle.UpdatePlaylistActivityTest.handleRequest_goodRequest_updatesPlaylistName" />
+        <item itemvalue="Gradle.MT2IntrospectionTests" />
       </list>
     </recent_temporary>
   </component>
@@ -198,15 +209,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="GradleRunConfiguration">
-        <watch expression="request.getTags()" language="JAVA" />
-        <watch expression="playlist.getTags()" language="JAVA" />
-        <watch expression="result.getPlaylist().getTags()" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
