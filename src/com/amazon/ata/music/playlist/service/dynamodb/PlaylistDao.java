@@ -81,16 +81,16 @@ public class PlaylistDao {
             playlist = getPlaylist(playlistId);
         } catch (PlaylistNotFoundException ex) {
             throw new PlaylistNotFoundException("The playlist with the given id" + playlistId
-                    + "does not exist.");
+                    + " does not exist.");
         }
         // validate that the provided playlist exists and if it doesn't throw a <PlaylistNotFoundException>
 
         boolean isCustomerIdValid = MusicPlaylistServiceUtils.isValidString(customerId);
-        if (!customerId.equals(playlist.getCustomerId())) {
-            throw new InvalidAttributeChangeException("The given customer Id does not match the "
-                    + "customer Id associated with the playlist.");
-        } else if (!isCustomerIdValid) {
+        if (!isCustomerIdValid) {
             throw new InvalidAttributeValueException("Given Customer ID: " + customerId + " is invalid.");
+        } else if (!customerId.equals(playlist.getCustomerId())) {
+            throw new InvalidAttributeChangeException("The given customer Id does not match the "
+                    + " customer Id associated with the playlist.");
         }
         // validate the provided customer id
         // ensure it matches the customer id associated with the given playlist and if not throw a ...
