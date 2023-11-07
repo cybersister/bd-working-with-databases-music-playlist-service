@@ -90,7 +90,7 @@ public class PlaylistDao {
             throw new InvalidAttributeValueException("Given Customer ID: " + customerId + " is invalid.");
         } else if (!customerId.equals(playlist.getCustomerId())) {
             throw new InvalidAttributeChangeException("The given customer Id does not match the "
-                    + " customer Id associated with the playlist.");
+                    + "customer Id associated with the playlist.");
         }
         // validate the provided customer id
         // ensure it matches the customer id associated with the given playlist and if not throw a ...
