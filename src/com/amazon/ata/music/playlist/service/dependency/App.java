@@ -16,6 +16,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
  * This class manages service dependencies.
  */
 public class App {
+
     private DynamoDBMapper dynamoDBMapper;
 
     /**
@@ -82,4 +83,5 @@ public class App {
         }
         return dynamoDBMapper;
     }
+
 }
