@@ -85,15 +85,15 @@ your implementation as well.
 @Singleton
 @Component(modules = {DaoModule.class})
 public interface ServiceComponent {
-    public provideCreatePlaylistActivity();
+    CreatePlaylistActivity provideCreatePlaylistActivity();
 
-    public provideGetPlaylistActivity();
+    GetPlaylistActivity provideGetPlaylistActivity();
 
-    public provideUpdatePlaylistActivity();
+    UpdatePlaylistActivity provideUpdatePlaylistActivity();
 
-    public provideAddSongToPlaylistActivity();
+    AddSongToPlaylistActivity provideAddSongToPlaylistActivity();
 
-    public provideGetPlaylistSongActivity();
+    GetPlaylistSongsActivity provideGetPlaylistSongActivity();
 }
 ```
 

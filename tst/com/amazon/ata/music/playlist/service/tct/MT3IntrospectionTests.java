@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("MT03")
 public class MT3IntrospectionTests {
+
     private static final String BASE_PACKAGE = "com.amazon.ata.music.playlist.service.";
     private static final Logger log = LogManager.getLogger();
     private Class<?> component;
@@ -162,4 +163,5 @@ public class MT3IntrospectionTests {
                 String.format("Expected constructor for class [%s] to be annotated with @Inject",
                     constructor.getDeclaringClass())));
     }
+
 }

@@ -27,6 +27,7 @@ public class App {
     public CreatePlaylistActivity provideCreatePlaylistActivity() {
         return new CreatePlaylistActivity(providePlaylistDao());
     }
+    // done
 
     /**
      * Provides a new GetPlaylistActivity with injected dependencies.
@@ -36,6 +37,7 @@ public class App {
     public GetPlaylistActivity provideGetPlaylistActivity() {
         return new GetPlaylistActivity(providePlaylistDao());
     }
+    // done
 
     /**
      * Provides a new UpdatePlaylistActivity with injected dependencies.
@@ -45,6 +47,7 @@ public class App {
     public UpdatePlaylistActivity provideUpdatePlaylistActivity() {
         return new UpdatePlaylistActivity(providePlaylistDao());
     }
+    // done
 
     /**
      * Provides a new AddSongToPlaylistActivity with injected dependencies.
@@ -54,6 +57,7 @@ public class App {
     public AddSongToPlaylistActivity provideAddSongToPlaylistActivity() {
         return new AddSongToPlaylistActivity(providePlaylistDao(), provideAlbumTrackDao());
     }
+    // done
 
     /**
      * Provides a new GetPlaylistSongsActivity with injected dependencies.
@@ -63,6 +67,7 @@ public class App {
     public GetPlaylistSongsActivity provideGetPlaylistSongsActivity() {
         return new GetPlaylistSongsActivity(providePlaylistDao());
     }
+    // done
 
     private PlaylistDao providePlaylistDao() {
         return new PlaylistDao(provideDynamoDBMapper());
