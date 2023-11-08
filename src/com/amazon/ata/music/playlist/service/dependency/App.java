@@ -17,6 +17,8 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
  */
 public class App {
     private DynamoDBMapper dynamoDBMapper;
+    
+    // i'm scared cause i messed things up
 
     /**
      * Provides a new CreatePlaylistActivity with injected dependencies.
