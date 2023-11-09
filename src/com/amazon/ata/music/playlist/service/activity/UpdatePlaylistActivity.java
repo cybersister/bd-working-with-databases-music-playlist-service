@@ -16,6 +16,8 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
+
 /**
  * Implementation of the UpdatePlaylistActivity for the MusicPlaylistService's UpdatePlaylist API.
  *
@@ -32,6 +34,7 @@ public class UpdatePlaylistActivity implements
      *
      * @param playlistDao PlaylistDao to access the playlist table.
      */
+    @Inject
     public UpdatePlaylistActivity(PlaylistDao playlistDao) {
         this.playlistDao = playlistDao;
     }
@@ -41,6 +44,7 @@ public class UpdatePlaylistActivity implements
         DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
         this.playlistDao = new PlaylistDao(dynamoDBMapper);
     }
+    // commenting out in order to pass <MT3Introspections>
 
     /**
      * This method handles the incoming request by retrieving the playlist, updating it, and persisting

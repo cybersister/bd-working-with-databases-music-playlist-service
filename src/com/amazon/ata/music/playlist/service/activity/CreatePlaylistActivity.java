@@ -15,7 +15,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -34,6 +34,7 @@ public class CreatePlaylistActivity implements
      *
      * @param playlistDao PlaylistDao to access the playlists table.
      */
+    @Inject
     public CreatePlaylistActivity(PlaylistDao playlistDao) {
         this.playlistDao = playlistDao;
     }
@@ -44,6 +45,7 @@ public class CreatePlaylistActivity implements
         this.playlistDao = new PlaylistDao(dynamoDBMapper);
     }
     // strictly for the aws lambda function ... requires default no-argument constructor
+    // commenting out in order to pass <MT3Introspections>
 
     /**
      * This method handles the incoming request by persisting a new playlist with the provided playlist
