@@ -37,7 +37,6 @@ public class AddSongToPlaylistActivity implements
         this.playlistDao = playlistDao;
         this.albumTrackDao = albumTrackDao;
     }
-    // constructor
 
     /**
      * This method handles the incoming request by adding another song to a playlist and persisting the

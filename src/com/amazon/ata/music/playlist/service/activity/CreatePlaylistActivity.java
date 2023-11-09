@@ -45,6 +45,7 @@ public class CreatePlaylistActivity implements
         this.playlistDao = new PlaylistDao(dynamoDBMapper);
     }
     // strictly for the aws lambda function ... requires default no-argument constructor
+    // commenting out in order to pass <MT3Introspections>
 
     /**
      * This method handles the incoming request by persisting a new playlist with the provided playlist
