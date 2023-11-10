@@ -44,7 +44,6 @@ public class UpdatePlaylistActivity implements
         DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
         this.playlistDao = new PlaylistDao(dynamoDBMapper);
     }
-    // commenting out in order to pass <MT3Introspections>
 
     /**
      * This method handles the incoming request by retrieving the playlist, updating it, and persisting
