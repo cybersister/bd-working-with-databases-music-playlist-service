@@ -42,7 +42,7 @@ public class PlaylistDao {
         Playlist playlist = this.dynamoDbMapper.load(Playlist.class, id);
 
         if (playlist == null) {
-            throw new PlaylistNotFoundException("Could not find playlist with id " + id);
+            throw new PlaylistNotFoundException("Could not find playlist with id " + id + ".");
         }
 
         return playlist;
