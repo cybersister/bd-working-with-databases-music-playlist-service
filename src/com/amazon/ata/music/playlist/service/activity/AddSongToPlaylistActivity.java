@@ -1,11 +1,16 @@
 package com.amazon.ata.music.playlist.service.activity;
 
+import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
+import com.amazon.ata.music.playlist.service.converters.ModelConverter;
+import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
 import com.amazon.ata.music.playlist.service.models.requests.AddSongToPlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.AddSongToPlaylistResult;
 import com.amazon.ata.music.playlist.service.models.SongModel;
 import com.amazon.ata.music.playlist.service.dynamodb.AlbumTrackDao;
 import com.amazon.ata.music.playlist.service.dynamodb.PlaylistDao;
 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
@@ -38,6 +43,14 @@ public class AddSongToPlaylistActivity implements
         this.albumTrackDao = albumTrackDao;
     }
 
+    public AddSongToPlaylistActivity() {
+        AmazonDynamoDB amazonDynamoDB = DynamoDbClientProvider.getDynamoDBClient();
+        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
+        this.playlistDao = new PlaylistDao(dynamoDBMapper);
+        this.albumTrackDao = new AlbumTrackDao(dynamoDBMapper);
+    }
+    // strictly for the aws lambda function ... requires default no-argument constructor
+
     /**
      * This method handles the incoming request by adding another song to a playlist and persisting the
      * updated playlist.
@@ -59,10 +72,19 @@ public class AddSongToPlaylistActivity implements
 
         log.info("Received AddSongToPlaylistRequest {} ", addSongToPlaylistRequest);
 
-        return AddSongToPlaylistResult.builder()
-                .withSongList(Collections.singletonList(new SongModel()))
-                .build();
+        String id = addSongToPlaylistRequest.getId();
+        String asin = addSongToPlaylistRequest.getAsin();
+        int trackNumber = addSongToPlaylistRequest.getTrackNumber();
+        // boolean queueNext = addSongToPlaylistRequest.isQueueNext();
+        // not necessary for this mastery task ... will implement later
 
+        AlbumTrack albumTrack = albumTrackDao.addSongToPlaylist(id, asin, trackNumber);
+
+        SongModel songModel = new ModelConverter().toSongModel(albumTrack);
+
+        return AddSongToPlaylistResult.builder()
+                .withSongList(Collections.singletonList(songModel))
+                .build();
     }
 
 }
