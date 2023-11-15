@@ -39,12 +39,7 @@ public class AlbumTrackDao {
         return albumTrack;
     }
 
-    public AlbumTrack addSongToPlaylist(String id, String asin, int trackNumber) {
-        Playlist playlist = this.dynamoDbMapper.load(Playlist.class, id);
-        if (playlist == null) {
-            throw new PlaylistNotFoundException("Could not find playlist with id " + id + ".");
-        }
-
+    public AlbumTrack addSongToPlaylist(Playlist playlist, String asin, int trackNumber) {
         List<AlbumTrack> listOfTracks = playlist.getSongList();
 
         AlbumTrack song = new AlbumTrack();

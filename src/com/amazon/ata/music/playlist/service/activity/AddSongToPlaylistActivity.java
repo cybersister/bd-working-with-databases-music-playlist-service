@@ -3,6 +3,7 @@ package com.amazon.ata.music.playlist.service.activity;
 import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazon.ata.music.playlist.service.converters.ModelConverter;
 import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
+import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.models.requests.AddSongToPlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.AddSongToPlaylistResult;
 import com.amazon.ata.music.playlist.service.models.SongModel;
@@ -17,6 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -69,16 +71,16 @@ public class AddSongToPlaylistActivity implements
     @Override
     public AddSongToPlaylistResult handleRequest(final AddSongToPlaylistRequest addSongToPlaylistRequest,
                                                  Context context) {
-
         log.info("Received AddSongToPlaylistRequest {} ", addSongToPlaylistRequest);
 
         String id = addSongToPlaylistRequest.getId();
         String asin = addSongToPlaylistRequest.getAsin();
         int trackNumber = addSongToPlaylistRequest.getTrackNumber();
-        // boolean queueNext = addSongToPlaylistRequest.isQueueNext();
-        // not necessary for this mastery task ... will implement later
 
-        AlbumTrack albumTrack = albumTrackDao.addSongToPlaylist(id, asin, trackNumber);
+        Playlist playlist = playlistDao.getPlaylist(id);
+
+        AlbumTrack albumTrack = albumTrackDao.addSongToPlaylist(playlist, asin, trackNumber);
+        // fixme -> NEED TO MOCK THIS IN YOUR TEST <albumTrackDao.addSongToPlaylist()>
 
         SongModel songModel = new ModelConverter().toSongModel(albumTrack);
 
