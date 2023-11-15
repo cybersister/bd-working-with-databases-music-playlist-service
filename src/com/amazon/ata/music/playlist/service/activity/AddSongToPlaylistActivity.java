@@ -20,6 +20,7 @@ import org.apache.logging.log4j.Logger;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Implementation of the AddSongToPlaylistActivity for the MusicPlaylistService's AddSongToPlaylist API.
@@ -80,7 +81,6 @@ public class AddSongToPlaylistActivity implements
         Playlist playlist = playlistDao.getPlaylist(id);
 
         AlbumTrack albumTrack = albumTrackDao.addSongToPlaylist(playlist, asin, trackNumber);
-        // fixme -> NEED TO MOCK THIS IN YOUR TEST <albumTrackDao.addSongToPlaylist()>
 
         SongModel songModel = new ModelConverter().toSongModel(albumTrack);
 

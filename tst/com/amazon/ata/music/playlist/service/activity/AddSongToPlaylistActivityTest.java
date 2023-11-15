@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -49,6 +50,10 @@ public class AddSongToPlaylistActivityTest {
         String addedAsin = albumTrackToAdd.getAsin();
         String addedTrackNumber = albumTrackToAdd.getTrackNumber();
 
+        List<AlbumTrack> albumTrackList = originalPlaylist.getSongList();
+        albumTrackList.add(albumTrackToAdd);
+        originalPlaylist.setSongList(albumTrackList);
+
         AddSongToPlaylistRequest request = AddSongToPlaylistRequest.builder()
                 .withId(playlistId)
                 .withAsin(addedAsin)
@@ -58,6 +63,7 @@ public class AddSongToPlaylistActivityTest {
         when(playlistDao.getPlaylist(playlistId)).thenReturn(originalPlaylist);
         when(albumTrackDao.addSongToPlaylist(originalPlaylist, addedAsin,
                 Integer.parseInt(addedTrackNumber))).thenReturn(albumTrackToAdd);
+
         // this <when()> statement covers what <AlbumTrack> should be returned, but it doesn't make
         // the actual change to the <originalPlaylist>
         // todo -> checkout older version of sprint to see what this test originally looked like and was
@@ -67,9 +73,8 @@ public class AddSongToPlaylistActivityTest {
 
         // THEN
         assertEquals(2, result.getSongList().size());
-
-//        SongModel secondSong = result.getSongList().get(1);
-//        AlbumTrackTestHelper.assertAlbumTrackEqualsSongModel(albumTrackToAdd, secondSong);
+        SongModel secondSong = result.getSongList().get(1);
+        AlbumTrackTestHelper.assertAlbumTrackEqualsSongModel(albumTrackToAdd, secondSong);
     }
 
     @Test
