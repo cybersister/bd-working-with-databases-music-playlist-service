@@ -82,6 +82,9 @@ public class AddSongToPlaylistActivity implements
 
         AlbumTrack albumTrack = albumTrackDao.addSongToPlaylist(playlist, asin, trackNumber);
 
+        // return the updated song list from the api
+        // think we could do this in the <addSongToPlaylist()> method
+
         SongModel songModel = new ModelConverter().toSongModel(albumTrack);
 
         return AddSongToPlaylistResult.builder()
