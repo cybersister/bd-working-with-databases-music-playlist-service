@@ -28,7 +28,7 @@ public class AlbumTrackDao {
         this.dynamoDbMapper = dynamoDbMapper;
     }
 
-    public AlbumTrack getAlbumTrack(String asin, String trackNumber) {
+    public AlbumTrack getAlbumTrack(String asin, int trackNumber) {
         AlbumTrack albumTrack = this.dynamoDbMapper.load(AlbumTrack.class, asin, trackNumber);
 
         if (albumTrack == null) {
@@ -44,7 +44,7 @@ public class AlbumTrackDao {
 
         AlbumTrack song = new AlbumTrack();
         song.setAsin(asin);
-        song.setTrackNumber(String.valueOf(trackNumber));
+        song.setTrackNumber(trackNumber);
 
         listOfTracks.add(song);
 
@@ -53,6 +53,7 @@ public class AlbumTrackDao {
         this.dynamoDbMapper.save(playlist);
 
         return song;
+
     }
 
 }

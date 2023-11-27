@@ -1,5 +1,6 @@
 package com.amazon.ata.music.playlist.service.dynamodb;
 
+import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.exceptions.InvalidAttributeChangeException;
 import com.amazon.ata.music.playlist.service.exceptions.InvalidAttributeValueException;
@@ -76,6 +77,12 @@ public class PlaylistDao {
         return playlist;
     }
 
+    public Playlist savePlaylist(Playlist playlist) {
+        this.dynamoDbMapper.save(playlist);
+
+        return playlist;
+    }
+
     public Playlist updatePlaylist(String playlistId, String updatedPlaylistName, String customerId) {
 
         Playlist playlist;
@@ -121,6 +128,23 @@ public class PlaylistDao {
         // IT WILL WRITE OVER TOP OF THE ALREADY EXISTING PLAYLIST
 
         return playlist;
+    }
+
+    public AlbumTrack addSongToPlaylist(Playlist playlist, String asin, int trackNumber) {
+        List<AlbumTrack> listOfTracks = playlist.getSongList();
+
+        AlbumTrack song = new AlbumTrack();
+        song.setAsin(asin);
+        song.setTrackNumber(trackNumber);
+
+        listOfTracks.add(song);
+
+        playlist.setSongList(listOfTracks);
+
+        this.dynamoDbMapper.save(playlist);
+
+        return song;
+
     }
 
 }

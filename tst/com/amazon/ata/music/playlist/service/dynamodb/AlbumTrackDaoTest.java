@@ -27,7 +27,7 @@ public class AlbumTrackDaoTest {
 //******************************************************************************************************************
 
     private String asin;
-    private String trackNumber;
+    private int trackNumber;
     private String albumName;
     private String songTitle;
     private AlbumTrack albumTrack;
@@ -41,7 +41,7 @@ public class AlbumTrackDaoTest {
         albumTrackDao = new AlbumTrackDao(dynamoDBMapper);
 
         asin = "123456789";
-        trackNumber = "7";
+        trackNumber = 7;
         albumName = "For All the Dogs";
         songTitle = "Your Mom";
 

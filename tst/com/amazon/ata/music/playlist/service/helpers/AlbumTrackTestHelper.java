@@ -14,7 +14,7 @@ public final class AlbumTrackTestHelper {
     public static AlbumTrack generateAlbumTrack(int sequenceNumber) {
         AlbumTrack albumTrack = new AlbumTrack();
         albumTrack.setAsin("asin" + sequenceNumber);
-        albumTrack.setTrackNumber(String.valueOf(sequenceNumber));
+        albumTrack.setTrackNumber(sequenceNumber);
         albumTrack.setAlbumName("album" + sequenceNumber);
         albumTrack.setSongTitle("title" + sequenceNumber);
         return albumTrack;

@@ -36,7 +36,7 @@ public class ModelConverter {
     public SongModel toSongModel(AlbumTrack albumTrack) {
         return SongModel.builder()
                 .withAsin(albumTrack.getAsin())
-                .withTrackNumber(Integer.parseInt(albumTrack.getTrackNumber()))
+                .withTrackNumber(albumTrack.getTrackNumber())
                 .withAlbum(albumTrack.getAlbumName())
                 .withTitle(albumTrack.getSongTitle())
                 .build();

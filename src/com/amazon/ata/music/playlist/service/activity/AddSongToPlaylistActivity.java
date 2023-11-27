@@ -4,6 +4,7 @@ import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazon.ata.music.playlist.service.converters.ModelConverter;
 import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
+import com.amazon.ata.music.playlist.service.exceptions.AlbumTrackNotFoundException;
 import com.amazon.ata.music.playlist.service.models.requests.AddSongToPlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.AddSongToPlaylistResult;
 import com.amazon.ata.music.playlist.service.models.SongModel;
@@ -80,16 +81,41 @@ public class AddSongToPlaylistActivity implements
 
         Playlist playlist = playlistDao.getPlaylist(id);
 
-        AlbumTrack albumTrack = albumTrackDao.addSongToPlaylist(playlist, asin, trackNumber);
+        // AlbumTrack albumTrack = albumTrackDao.addSongToPlaylist(playlist, asin, trackNumber);
+
+        List<AlbumTrack> listOfTracks = playlist.getSongList();
+
+        AlbumTrack song = albumTrackDao.getAlbumTrack(asin, trackNumber);
+
+        if (song == null) {
+            throw new AlbumTrackNotFoundException();
+        }
+
+        if (addSongToPlaylistRequest.isQueueNext()) {
+            listOfTracks.add(0, song);
+        } else {
+            listOfTracks.add(song);
+        }
+
+        playlist.setSongList(listOfTracks);
+
+        playlistDao.savePlaylist(playlist);
 
         // return the updated song list from the api
         // think we could do this in the <addSongToPlaylist()> method
 
-        SongModel songModel = new ModelConverter().toSongModel(albumTrack);
+        List<SongModel> songModelList = new ArrayList<>();
+
+        for (AlbumTrack albumTrack : playlist.getSongList()) {
+            SongModel songModel = new ModelConverter().toSongModel(albumTrack);
+
+            songModelList.add(songModel);
+        }
 
         return AddSongToPlaylistResult.builder()
-                .withSongList(Collections.singletonList(songModel))
+                .withSongList(songModelList)
                 .build();
+
     }
 
 }

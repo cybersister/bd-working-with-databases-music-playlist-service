@@ -12,7 +12,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class AlbumTrack {
 
     private String asin;
-    private String trackNumber;
+    private int trackNumber;
     private String albumName;
     private String songTitle;
 
@@ -29,11 +29,11 @@ public class AlbumTrack {
     }
 
     @DynamoDBRangeKey(attributeName = "track_number")
-    public String getTrackNumber() {
+    public int getTrackNumber() {
         return trackNumber;
     }
 
-    public AlbumTrack setTrackNumber(String trackNumber) {
+    public AlbumTrack setTrackNumber(int trackNumber) {
         this.trackNumber = trackNumber;
         return this;
     }
