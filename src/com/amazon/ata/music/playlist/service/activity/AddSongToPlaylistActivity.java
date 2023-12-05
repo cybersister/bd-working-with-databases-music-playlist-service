@@ -21,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -93,10 +94,18 @@ public class AddSongToPlaylistActivity implements
             throw new AlbumTrackNotFoundException();
         }
 
+//        if (addSongToPlaylistRequest.isQueueNext()) {
+//            listOfTracks.add(0, song);
+//        } else {
+//            listOfTracks.add(song);
+//        }
+
+        LinkedList linkedListOfTracks = (LinkedList) listOfTracks;
+
         if (addSongToPlaylistRequest.isQueueNext()) {
-            listOfTracks.add(0, song);
+            linkedListOfTracks.addFirst(song);
         } else {
-            listOfTracks.add(song);
+            linkedListOfTracks.addLast(song);
         }
 
         playlist.setSongList(listOfTracks);
@@ -117,7 +126,6 @@ public class AddSongToPlaylistActivity implements
         return AddSongToPlaylistResult.builder()
                 .withSongList(songModelList)
                 .build();
-
     }
 
 }
