@@ -39,11 +39,11 @@ public class UpdatePlaylistActivity implements
         this.playlistDao = playlistDao;
     }
 
-//    public UpdatePlaylistActivity() {
-//        AmazonDynamoDB amazonDynamoDB = DynamoDbClientProvider.getDynamoDBClient();
-//        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
-//        this.playlistDao = new PlaylistDao(dynamoDBMapper);
-//    }
+    public UpdatePlaylistActivity() {
+        AmazonDynamoDB amazonDynamoDB = DynamoDbClientProvider.getDynamoDBClient();
+        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
+        this.playlistDao = new PlaylistDao(dynamoDBMapper);
+    }
 
     // commenting out for the sake of PASSING a test
 

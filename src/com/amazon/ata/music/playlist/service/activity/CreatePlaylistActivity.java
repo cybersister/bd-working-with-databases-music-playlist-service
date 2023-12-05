@@ -39,11 +39,11 @@ public class CreatePlaylistActivity implements
         this.playlistDao = playlistDao;
     }
 
-//    public CreatePlaylistActivity() {
-//        AmazonDynamoDB amazonDynamoDB = DynamoDbClientProvider.getDynamoDBClient();
-//        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
-//        this.playlistDao = new PlaylistDao(dynamoDBMapper);
-//    }
+    public CreatePlaylistActivity() {
+        AmazonDynamoDB amazonDynamoDB = DynamoDbClientProvider.getDynamoDBClient();
+        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
+        this.playlistDao = new PlaylistDao(dynamoDBMapper);
+    }
     // strictly for the aws lambda function ... requires default no-argument constructor
 
     // commenting out for the sake of PASSING a test
