@@ -74,10 +74,12 @@ public class GetPlaylistSongsActivity implements RequestHandler<GetPlaylistSongs
             songModelList.add(songModel);
         }
 
-        if (getPlaylistSongsRequest.getOrder().equals(SongOrder.SHUFFLED)) {
-            Collections.shuffle(songModelList);
-        } else if (getPlaylistSongsRequest.getOrder().equals(SongOrder.REVERSED)) {
-            Collections.reverse(songModelList);
+        if (getPlaylistSongsRequest.getOrder() != null) {
+            if (getPlaylistSongsRequest.getOrder().equals(SongOrder.SHUFFLED)) {
+                Collections.shuffle(songModelList);
+            } else if (getPlaylistSongsRequest.getOrder().equals(SongOrder.REVERSED)) {
+                Collections.reverse(songModelList);
+            }
         }
 
         return GetPlaylistSongsResult.builder()
