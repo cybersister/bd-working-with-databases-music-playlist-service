@@ -25,10 +25,8 @@ public class AddSongToPlaylistActivityTest {
 
     @Mock
     private PlaylistDao playlistDao;
-
     @Mock
     private AlbumTrackDao albumTrackDao;
-
     private AddSongToPlaylistActivity addSongToPlaylistActivity;
 
     @BeforeEach
