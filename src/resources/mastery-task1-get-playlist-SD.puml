@@ -13,11 +13,12 @@ Client -> APIGateway : GET /playlists/:id
 activate Client
 APIGateway -> Lambda
 activate Lambda
+Lambda -> GetPlaylistActivity : handleRequest(GetPlaylistRequest, Context)
 activate GetPlaylistActivity
-activate PlaylistDao
-Lambda -> GetPlaylistActivity :  handleRequest(GetPlaylistRequest, Context)
 GetPlaylistActivity -> PlaylistDao : getPlaylist(requestedId : String)
+activate PlaylistDao
 PlaylistDao -> DynamoDB : load playlist by ID
+
 alt if playlist ID does not exist
     PlaylistDao <-- DynamoDB : null
     Lambda <-- PlaylistDao : throw PlaylistNotFoundException
