@@ -55,6 +55,8 @@ public class GetPlaylistRequest {
             return this;
         }
 
-        public GetPlaylistRequest build() { return new GetPlaylistRequest(this); }
+        public GetPlaylistRequest build() {
+            return new GetPlaylistRequest(this);
+        }
     }
 }

@@ -1,5 +1,5 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
+//import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+//import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
   id 'java'
@@ -8,10 +8,6 @@ plugins {
 repositories {
   mavenCentral()
 }
-
-
-
-
 
 // for use with the Gradle Java Plugin
 sourceSets {
